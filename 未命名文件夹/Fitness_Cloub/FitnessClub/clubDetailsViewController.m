@@ -15,7 +15,7 @@
     UIActivityIndicatorView *aiv;
     NSString *ns;
 }
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentHeaderLayout;
+
 @end
 
 @implementation clubDetailsViewController
