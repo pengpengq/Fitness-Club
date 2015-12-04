@@ -10,8 +10,8 @@
 
 @interface clubdateilTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *classImageV;
-@property (weak, nonatomic) IBOutlet UILabel *courseName;
-@property (weak, nonatomic) IBOutlet UILabel *likeLabel;
-@property (weak, nonatomic) IBOutlet UILabel *unlikeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *priceLabel;
+@property (weak, nonatomic) IBOutlet UILabel *eName;
+@property (weak, nonatomic) IBOutlet UILabel *salecountL;
 
 @end

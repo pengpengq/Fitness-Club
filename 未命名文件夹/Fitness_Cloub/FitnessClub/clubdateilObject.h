@@ -12,6 +12,8 @@
 @property (strong, nonatomic) NSString *clubAddress;
 
 @property (strong, nonatomic) NSString *name;
+@property (strong, nonatomic) NSString *saleCount;
+@property (strong, nonatomic) NSString *price;
 - (id)initWithDictionary:(NSDictionary *)dic;
 
 @end
