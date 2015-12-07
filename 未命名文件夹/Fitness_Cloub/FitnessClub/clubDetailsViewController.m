@@ -10,6 +10,7 @@
 #import "clubdateilTableViewCell.h"
 #import "clubdateilObject.h"
 #import "homeObject.h"
+
 @interface clubDetailsViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
    
@@ -230,4 +231,6 @@
 }
 
 
+- (IBAction)collectionAction:(UIBarButtonItem *)sender {
+}
 @end

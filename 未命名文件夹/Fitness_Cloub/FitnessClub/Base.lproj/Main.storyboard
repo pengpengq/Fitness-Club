@@ -1583,7 +1583,7 @@
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="SZU-lQ-ZEc">
-                                    <rect key="frame" x="0.0" y="64" width="320" height="326"/>
+                                    <rect key="frame" x="0.0" y="64" width="320" height="396"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PGj-Yb-ICB">
@@ -1690,14 +1690,14 @@
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="clubdetailcell" rowHeight="85" id="uUr-I2-bcx" customClass="clubdateilTableViewCell">
-                                        <rect key="frame" x="0.0" y="418" width="320" height="85"/>
+                                        <rect key="frame" x="0.0" y="488" width="320" height="85"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uUr-I2-bcx" id="bXg-Ex-8U8">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="84"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="eName" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t6m-Fn-aOP">
-                                                    <rect key="frame" x="101" y="15" width="186" height="17"/>
+                                                    <rect key="frame" x="101" y="15" width="176" height="17"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -1750,13 +1750,13 @@
                                             <constraints>
                                                 <constraint firstItem="Qoy-et-m62" firstAttribute="centerY" secondItem="kqd-it-EqE" secondAttribute="centerY" id="5zy-Mf-DyO"/>
                                                 <constraint firstAttribute="bottom" secondItem="Cod-Y0-bFL" secondAttribute="bottom" constant="15" id="GeP-Ts-RLS"/>
+                                                <constraint firstAttribute="trailing" secondItem="t6m-Fn-aOP" secondAttribute="trailing" constant="10" id="Kkz-w4-JMh"/>
                                                 <constraint firstItem="2LL-f4-Z4s" firstAttribute="leading" secondItem="bXg-Ex-8U8" secondAttribute="leading" constant="10" id="OYs-iX-fJP"/>
                                                 <constraint firstItem="t6m-Fn-aOP" firstAttribute="leading" secondItem="2LL-f4-Z4s" secondAttribute="trailing" constant="19" id="R5F-Qh-n0h"/>
                                                 <constraint firstItem="kqd-it-EqE" firstAttribute="leading" secondItem="WQ3-Nx-3g1" secondAttribute="trailing" id="UCl-Vm-Zqh"/>
                                                 <constraint firstItem="maA-nM-CnU" firstAttribute="centerY" secondItem="WQ3-Nx-3g1" secondAttribute="centerY" id="V2U-vc-EpI"/>
                                                 <constraint firstAttribute="bottom" secondItem="WQ3-Nx-3g1" secondAttribute="bottom" constant="15" id="XDy-tt-QOC"/>
                                                 <constraint firstItem="t6m-Fn-aOP" firstAttribute="top" secondItem="bXg-Ex-8U8" secondAttribute="top" constant="15" id="Xok-D0-KhB"/>
-                                                <constraint firstAttribute="trailing" secondItem="t6m-Fn-aOP" secondAttribute="trailing" id="Y20-sb-7aC"/>
                                                 <constraint firstAttribute="bottom" secondItem="2LL-f4-Z4s" secondAttribute="bottom" constant="10" id="bVE-md-6xt"/>
                                                 <constraint firstItem="2LL-f4-Z4s" firstAttribute="top" secondItem="bXg-Ex-8U8" secondAttribute="top" constant="10" id="cLk-AZ-ytg"/>
                                                 <constraint firstItem="Cod-Y0-bFL" firstAttribute="leading" secondItem="maA-nM-CnU" secondAttribute="trailing" constant="-5" id="dbN-uW-9Z6"/>
@@ -1787,7 +1787,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="会所详情" id="ghN-RK-G9S">
-                        <barButtonItem key="rightBarButtonItem" title="收藏" id="IZl-4r-RpU"/>
+                        <barButtonItem key="rightBarButtonItem" title="收藏" id="IZl-4r-RpU">
+                            <connections>
+                                <action selector="collectionAction:" destination="ETg-l3-LZO" id="psj-7i-Mpo"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
