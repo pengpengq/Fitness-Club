@@ -126,9 +126,9 @@
     //根据indexPath中的row信息获得包含该行的字典
     NSDictionary *dict=[arr objectAtIndex:indexPath.row];
     _cityNameLabel.text=[dict objectForKey:@"name"];
-    [self notification:[dict objectForKey:@"name"]];
-   
-
+    
+    [self notification:[dict objectForKey:@"name"] andid:[dict objectForKey:@"id"]];
+    
 }
 //设置cell的高度
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(nonnull NSIndexPath *)indexPath{
@@ -167,12 +167,12 @@
 
 
 //注册通知
--(void)notification:(NSString *)city{
+-(void)notification:(NSString *)city andid:(NSString *)ID{
     //创建单例化化通知中心实例
     NSNotificationCenter *notecenter=[NSNotificationCenter defaultCenter];
-    NSDictionary *dict = @{@"city":city};
+    NSDictionary *dict = @{@"city":city,@"id":ID};
     //通知中心的创建
-    NSNotification *note=[[NSNotification alloc]initWithName:@"updateProuct" object:nil userInfo:dict];
+    NSNotification *note=[[NSNotification alloc]initWithName:@"updateProduct" object:nil userInfo:dict];
     //用通知中心实例发送上述通知
     [notecenter performSelectorOnMainThread:@selector(postNotification:) withObject:note waitUntilDone:YES ];
     [self backTofirst];
@@ -189,6 +189,7 @@
 //    UINavigationController *view =[Utilities getStoryboardInstance:@"Main" byIdentity:@"home"];
 //      view.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
 //    [self presentViewController:view animated:YES completion:nil];
+    [self.navigationController popViewControllerAnimated:YES];
   }
 
 

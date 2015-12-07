@@ -19,7 +19,7 @@
 
 
 
-
+@property(strong,nonatomic)NSString *Str;
 @property(strong,nonatomic) NSDictionary *parameters;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 - (IBAction)dinwei:(UIBarButtonItem *)sender;
@@ -47,6 +47,7 @@
 @property (strong, nonatomic) NSArray *btnArr;
 @property (strong, nonatomic) NSArray *labelArr;
 - (IBAction)serachBtn:(UIButton *)sender;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *dinweiBtn;
 
 
 

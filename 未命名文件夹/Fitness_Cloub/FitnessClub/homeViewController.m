@@ -13,6 +13,7 @@
 {
     
     UIActivityIndicatorView *aiv;
+    NSString *ID;
 }
 @property (weak, nonatomic) IBOutlet UIView *headerView;
 
@@ -24,7 +25,7 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
-    
+    ID = @"0510";
     _tableView.delegate=self;
     _tableView.dataSource=self;
     [self naviConfiguration];
@@ -47,10 +48,15 @@
     //创建单例化化通知中心实例
     NSNotificationCenter *notecenter=[NSNotificationCenter defaultCenter];
     //当任何对象（object:nil）发送出updateProuct时由当前类执行(updateProductName:)的方法
-    [notecenter addObserverForName:@"updateProuct" object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note) {
+    [notecenter addObserverForName:@"updateProduct" object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note) {
         NSDictionary *dict = note.userInfo;
         NSString *city = dict[@"city"];
-        _cityBarBtn.title=city;
+        
+        ID=dict[@"id"];
+       NSLog(@"ID=%@",ID);
+       _cityBarBtn.title=city;
+       [self secondrequestData];
+        [_tableView reloadData];
     }];
 }
 
@@ -89,14 +95,14 @@
 //菊花膜+初始数据
 -(void)initializeData{
     loadingMore=NO;
-    perPage=3;
+    perPage=10;
     aiv = [Utilities getCoverOnView:self.view];
     [self refreshData];
 }
 //下拉刷新 +初始数据
 -(void)refreshData{
     loadingMore=YES;
-   loadCount=1;
+    loadCount=1;
     //请求热门的会所列表
     [self secondrequestData];
 }
@@ -139,14 +145,17 @@
 }
 -(void)secondrequestData{
     NSString *request = @"/homepage/choice";
+    
     //NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:loadCount], @"page", [NSNumber numberWithInteger:perPage], @"perPage", nil];
-    NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:loadCount], @"page", [NSNumber numberWithInteger:perPage], @"perPage",@"0510",@"city",@"120.31",@"jing",@"31.49",@"wei",nil];
+    NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:loadCount], @"page", [NSNumber numberWithInteger:perPage], @"perPage",ID,@"city",@"120.31",@"jing",@"31.49",@"wei",nil];
+    NSLog(@"parameters = %@", parameters);
     [RequestAPI getURL:request withParameters:parameters success:^(id responseObject) {
         NSLog(@"get responseObject = %@", responseObject);
         [aiv stopAnimating];
       [self endRefreshing];
        //收起上啦刷新的Footer
         [self loadDataEnd];
+        NSString *ns=[responseObject objectForKey:@"resultFlag"];
         if ([[responseObject objectForKey:@"resultFlag"] integerValue]==8001){
             //根据接口返回的数据结构拆解数据，用适当的容器（数据类型）盛放底层数据
             NSDictionary *rootDictory = [responseObject objectForKey:@"result"];
@@ -157,13 +166,19 @@
             }
             NSLog(@"dataArr=%@",dataArr);
             for (NSDictionary *dic in dataArr) {
-                homeObject *model=[[homeObject alloc] initWithDictionary:dic];
+                homeObject *model = [[homeObject alloc] initWithDictionary:dic];
                 NSLog(@"dic=%@",dic);
                 [_mutArray addObject:model];
                 NSLog(@"_mutArray%@",_mutArray);
             }
             [_tableView reloadData];
-    }else{
+          
+        }else if ([ns integerValue] == 8020){
+            
+         //   [Utilities popUpAlertViewWithMsg:@"该城市暂未开通服务！" andTitle:nil onView:self];
+            
+        }
+        else{
             [Utilities popUpAlertViewWithMsg:[responseObject objectForKey:@"resultFlag"] andTitle:nil onView:nil];
         }
         

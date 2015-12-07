@@ -17,6 +17,9 @@
 		5096CCCB1C11421B00471FB7 /* reservationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5096CCCA1C11421B00471FB7 /* reservationViewController.m */; };
 		5096CCCE1C11423100471FB7 /* notLoggedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5096CCCD1C11423100471FB7 /* notLoggedViewController.m */; };
 		5096CCD11C11427300471FB7 /* MLKMenuPopover.m in Sources */ = {isa = PBXBuildFile; fileRef = 5096CCD01C11427300471FB7 /* MLKMenuPopover.m */; };
+		9158CBFC1C145E1500E8D377 /* nearByCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9158CBFB1C145E1500E8D377 /* nearByCell.m */; };
+		9158CBFF1C145EBD00E8D377 /* nearByObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 9158CBFE1C145EBD00E8D377 /* nearByObject.m */; };
+		9158CC021C14776400E8D377 /* phoneNums.m in Sources */ = {isa = PBXBuildFile; fileRef = 9158CC011C14776400E8D377 /* phoneNums.m */; };
 		91E382CB1C05F9B800896049 /* citiesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91E382CA1C05F9B800896049 /* citiesViewController.m */; };
 		91E382CE1C0603B900896049 /* clubDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91E382CD1C0603B900896049 /* clubDetailsViewController.m */; };
 		91FFF7441C0F5E81002A99C9 /* MZTimerLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 91FFF7431C0F5E81002A99C9 /* MZTimerLabel.m */; };
@@ -112,6 +115,12 @@
 		5096CCCF1C11427300471FB7 /* MLKMenuPopover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLKMenuPopover.h; sourceTree = "<group>"; };
 		5096CCD01C11427300471FB7 /* MLKMenuPopover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLKMenuPopover.m; sourceTree = "<group>"; };
 		6CD53555DD79B5F9CCE380ED /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		9158CBFA1C145E1500E8D377 /* nearByCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nearByCell.h; sourceTree = "<group>"; };
+		9158CBFB1C145E1500E8D377 /* nearByCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = nearByCell.m; sourceTree = "<group>"; };
+		9158CBFD1C145EBD00E8D377 /* nearByObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nearByObject.h; sourceTree = "<group>"; };
+		9158CBFE1C145EBD00E8D377 /* nearByObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = nearByObject.m; sourceTree = "<group>"; };
+		9158CC001C14776400E8D377 /* phoneNums.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = phoneNums.h; sourceTree = "<group>"; };
+		9158CC011C14776400E8D377 /* phoneNums.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = phoneNums.m; sourceTree = "<group>"; };
 		91E382C91C05F9B800896049 /* citiesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = citiesViewController.h; sourceTree = "<group>"; };
 		91E382CA1C05F9B800896049 /* citiesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = citiesViewController.m; sourceTree = "<group>"; };
 		91E382CC1C0603B900896049 /* clubDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = clubDetailsViewController.h; sourceTree = "<group>"; };
@@ -255,7 +264,7 @@
 			children = (
 				C4EB9E151C044EEE00A1F600 /* clubViewController.h */,
 				C4EB9E161C044EEE00A1F600 /* clubViewController.m */,
-				C4ED21A01C06A3FD009818A7 /* 课程详情 */,
+				C4ED21A01C06A3FD009818A7 /*  体验券详情 */,
 				C4ED219F1C06A3DE009818A7 /* 会所详情 */,
 			);
 			name = "会所";
@@ -434,6 +443,8 @@
 				C4EB9DF61C044B8C00A1F600 /* RequestAPI.m */,
 				C4EB9DF71C044B8C00A1F600 /* StorageMgr.h */,
 				C4EB9DF81C044B8C00A1F600 /* StorageMgr.m */,
+				9158CC001C14776400E8D377 /* phoneNums.h */,
+				9158CC011C14776400E8D377 /* phoneNums.m */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -464,11 +475,13 @@
 				C45BED161C0C1CDB005623B9 /* citiesTableViewCell.h */,
 				C45BED171C0C1CDB005623B9 /* citiesTableViewCell.m */,
 				C48330FB1C05512900EF0513 /* homeTableViewCell.h */,
-				C48330FC1C05512900EF0513 /* homeTableViewCell.m */,
 				C4ED21B31C06D749009818A7 /* clubTableViewCell.h */,
+				C48330FC1C05512900EF0513 /* homeTableViewCell.m */,
 				C4ED21B41C06D749009818A7 /* clubTableViewCell.m */,
 				C4E632541C0D8FCB0076285D /* clubdateilTableViewCell.h */,
 				C4E632551C0D8FCB0076285D /* clubdateilTableViewCell.m */,
+				9158CBFA1C145E1500E8D377 /* nearByCell.h */,
+				9158CBFB1C145E1500E8D377 /* nearByCell.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -503,6 +516,8 @@
 				C4ED21BB1C06D7B0009818A7 /* courseObject.m */,
 				C4E632571C0D90020076285D /* clubdateilObject.h */,
 				C4E632581C0D90020076285D /* clubdateilObject.m */,
+				9158CBFD1C145EBD00E8D377 /* nearByObject.h */,
+				9158CBFE1C145EBD00E8D377 /* nearByObject.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -583,13 +598,13 @@
 			name = "会所详情";
 			sourceTree = "<group>";
 		};
-		C4ED21A01C06A3FD009818A7 /* 课程详情 */ = {
+		C4ED21A01C06A3FD009818A7 /*  体验券详情 */ = {
 			isa = PBXGroup;
 			children = (
 				C4ED21A11C06A424009818A7 /* courseDetailViewController.h */,
 				C4ED21A21C06A424009818A7 /* courseDetailViewController.m */,
 			);
-			name = "课程详情";
+			name = " 体验券详情";
 			sourceTree = "<group>";
 		};
 		C4ED21A41C06A573009818A7 /* 附近 */ = {
@@ -821,6 +836,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9158CBFC1C145E1500E8D377 /* nearByCell.m in Sources */,
 				C4EB9DFD1C044B8C00A1F600 /* StorageMgr.m in Sources */,
 				C4EB9DFC1C044B8C00A1F600 /* RequestAPI.m in Sources */,
 				C4C81D171C0E9D490051B776 /* UIViewController+ECSlidingViewController.m in Sources */,
@@ -867,9 +883,11 @@
 				C4ED21A71C06A59C009818A7 /* nearbyViewController.m in Sources */,
 				C48331081C05999900EF0513 /* EAIntroPage.m in Sources */,
 				91FFF7441C0F5E81002A99C9 /* MZTimerLabel.m in Sources */,
+				9158CC021C14776400E8D377 /* phoneNums.m in Sources */,
 				C4E632561C0D8FCB0076285D /* clubdateilTableViewCell.m in Sources */,
 				91E382CB1C05F9B800896049 /* citiesViewController.m in Sources */,
 				C4C81D141C0E9D490051B776 /* ECSlidingInteractiveTransition.m in Sources */,
+				9158CBFF1C145EBD00E8D377 /* nearByObject.m in Sources */,
 				C4E632591C0D90020076285D /* clubdateilObject.m in Sources */,
 				C4ED218E1C06A15E009818A7 /* modifyingDataViewController.m in Sources */,
 			);

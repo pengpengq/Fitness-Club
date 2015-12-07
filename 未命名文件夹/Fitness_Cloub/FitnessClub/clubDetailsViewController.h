@@ -11,6 +11,8 @@
 @interface clubDetailsViewController : UIViewController{
     NSInteger loadCount;
 }
+- (IBAction)collectionAction:(UIBarButtonItem *)sender;
+
 @property(strong,nonatomic)NSMutableArray *objectForShow;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -21,7 +23,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *clubAddress;
 @property (weak, nonatomic) IBOutlet UILabel *clubIntroduce;
 @property(strong,nonatomic) NSString *clubID;
-- (IBAction)dataAction:(UIButton *)sender;
+
 
 
 
