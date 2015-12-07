@@ -89,11 +89,24 @@
 }
 */
 - (IBAction)gerCoder:(UIButton *)sender {
+    
+    if ([_phoneNum.text isEqualToString:@""]) {
+        
+        [Utilities popUpAlertViewWithMsg:@"请填写手机号码" andTitle:nil onView:self];
+        return ;
+    }
+
+   
+
     NSString *request = @"/register/verificationCode";
     NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:_phoneNum.text, @"userTel", @"1", @"type", nil];
     [RequestAPI getURL:request withParameters:parameters success:^(id responseObject) {
         NSLog(@"get responseObject = %@", responseObject);
-          [self timeCount];
+        if ([[responseObject objectForKey:@"resultFlag"] integerValue]==8002)
+        {
+            [Utilities popUpAlertViewWithMsg:@"对不起！您输入的不是手机号码，请重新输入！" andTitle:nil onView:self];
+        }else{
+            [self timeCount];}
     } failure:^(NSError *error) {
         NSLog(@"get error = %@", error.description);
         [Utilities popUpAlertViewWithMsg:@"验证码获取失败，请检查网络是否畅通！" andTitle:nil onView:self];
@@ -144,10 +157,6 @@
             [Utilities popUpAlertViewWithMsg:@"确认密码必须与密码保持一致" andTitle:nil onView:self];
         return;
     }
-   else  if (![tel isEqualToString:[NSString stringWithFormat:@"^1?\\d{11}$"] ]) {
-        [Utilities popUpAlertViewWithMsg:@"确认密码必须与密码保持一致" andTitle:nil onView:self];
-        return;
-    }
     
     NSString *encodedPassword = [NSString encryptWithPublicKeyFromModulusAndExponent:[pwd getMD5_32BitString].UTF8String modulus:[[StorageMgr singletonStorageMgr] objectForKey:@"modulus"] exponent:[[StorageMgr singletonStorageMgr] objectForKey:@"exponent"]];
     UIActivityIndicatorView *aiv = [Utilities getCoverOnView:self.view];
@@ -176,7 +185,11 @@
         }else if ([ns integerValue]==8016){
             [Utilities popUpAlertViewWithMsg:@"该号码已注册" andTitle:nil onView:self];
             
-        }else{
+        }else if ([ns integerValue]==8002){
+            [Utilities popUpAlertViewWithMsg:@"对不起！您输入的不是手机号码，请重新输入！" andTitle:nil onView:self];
+            
+        }
+        else{
             [Utilities popUpAlertViewWithMsg:@"亲！请检查网络再来尝试..." andTitle:nil onView:self];
         }
 
@@ -192,9 +205,6 @@
 
     
 }
-
-    
-
 
 
 

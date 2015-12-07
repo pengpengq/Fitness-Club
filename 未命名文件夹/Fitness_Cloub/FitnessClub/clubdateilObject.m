@@ -10,11 +10,12 @@
 
 @implementation clubdateilObject
 - (id)initWithDictionary:(NSDictionary *)dic{
-    _name = [[dic objectForKey:@"clubName"] isKindOfClass:[NSNull class]] ? @"":[dic objectForKey:@"clubName"];
-    _clubAddress= [[dic objectForKey:@"clubAddressB"] isKindOfClass:[NSNull class]] ? @"":[dic objectForKey:@"clubAddressB"];
+    _eName = [[dic objectForKey:@"eName"] isKindOfClass:[NSNull class]] ? @"":[dic objectForKey:@"eName"];
+    _orginPrice= [[dic objectForKey:@"orginPrice"] isKindOfClass:[NSNull class]] ? @"":[dic objectForKey:@"orginPrice"];
     _saleCount=[[dic objectForKey:@"saleCount"] isKindOfClass:[NSNull class]] ? @"":[dic objectForKey:@"saleCount"];
-    _price=[[dic objectForKey:@"price"] isKindOfClass:[NSNull class]] ? @"":[dic objectForKey:@"price"];
-
+    _eLogo=[[dic objectForKey:@"eLogo"] isKindOfClass:[NSNull class]] ? @"":[dic objectForKey:@"eLogo"];
+_number = [[dic objectForKey:@"number"] isKindOfClass:[NSNull class]] ? @"":[dic objectForKey:@"number"];
+    _price = [[dic objectForKey:@"price"] isKindOfClass:[NSNull class]] ? @"":[dic objectForKey:@"price"];
     return self;
 }
 @end

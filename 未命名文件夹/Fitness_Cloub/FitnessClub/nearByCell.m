@@ -1,14 +1,14 @@
 //
-//  couponTableViewCell.m
+//  nearByCell.m
 //  FitnessClub
 //
-//  Created by QAQ on 15/12/4.
+//  Created by 姚国俊 on 15/12/6.
 //  Copyright © 2015年 milaotou. All rights reserved.
 //
 
-#import "couponTableViewCell.h"
+#import "nearByCell.h"
 
-@implementation couponTableViewCell
+@implementation nearByCell
 
 - (void)awakeFromNib {
     // Initialization code

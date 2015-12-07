@@ -9,6 +9,9 @@
 #import "courseDetailViewController.h"
 
 @interface courseDetailViewController ()
+@property (weak, nonatomic) IBOutlet UIImageView *logoImV;
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *typeLabel;
 
 @end
 

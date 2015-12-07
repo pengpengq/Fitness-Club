@@ -11,6 +11,7 @@
 @interface clubDetailsViewController : UIViewController{
     NSInteger loadCount;
 }
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentheight;
 @property(strong,nonatomic)NSMutableArray *objectForShow;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;

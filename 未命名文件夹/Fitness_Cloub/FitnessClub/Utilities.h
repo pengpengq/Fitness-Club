@@ -29,5 +29,4 @@
 + (NSString *)notRounding:(float)price afterPoint:(int)position;
 //根据URL下载图片并缓存
 + (UIImage *)imageUrl:(NSString *)url;
-
 @end
