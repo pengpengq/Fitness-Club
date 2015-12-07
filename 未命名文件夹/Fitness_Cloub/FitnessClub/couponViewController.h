@@ -8,9 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
-@interface couponViewController : UIViewController
+@interface couponViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>{
+    NSInteger loadCount;
+    NSInteger perPage;
+    NSInteger totalPage;
+    BOOL loadingMore;
+    
+}
 
+@property(strong,nonatomic) NSMutableArray *mutArray;
 
-
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 @end
