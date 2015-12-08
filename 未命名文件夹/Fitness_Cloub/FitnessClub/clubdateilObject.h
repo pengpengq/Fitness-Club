@@ -12,9 +12,11 @@
 @property (strong, nonatomic) NSString *eName;
 @property (strong, nonatomic) NSString *number;
 @property (strong, nonatomic) NSString *eLogo;
+@property (strong, nonatomic) NSString *eAddress;
 @property (strong, nonatomic) NSNumber *saleCount;
 @property (strong, nonatomic) NSNumber *orginPrice;
 @property (strong, nonatomic) NSNumber *price;
+@property (strong, nonatomic) NSString *eID;
 - (id)initWithDictionary:(NSDictionary *)dic;
 
 @end

@@ -16,6 +16,7 @@
     _eLogo=[[dic objectForKey:@"eLogo"] isKindOfClass:[NSNull class]] ? @"":[dic objectForKey:@"eLogo"];
 _number = [[dic objectForKey:@"number"] isKindOfClass:[NSNull class]] ? @"":[dic objectForKey:@"number"];
     _price = [[dic objectForKey:@"price"] isKindOfClass:[NSNull class]] ? @"":[dic objectForKey:@"price"];
+    _eID=[[dic objectForKey:@"eId"] isKindOfClass:[NSNull class]] ? @"":[dic objectForKey:@"eId"];
     return self;
 }
 @end

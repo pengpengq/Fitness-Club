@@ -29,7 +29,7 @@
         _userName.text = [Utilities getUserDefaults:@"userName"];
         
     }
-    if ([_passWord.text isEqualToString:@""]&&![[Utilities getUserDefaults:@"passWord"] isKindOfClass:[NSNull class]]){
+    if ([[Utilities getUserDefaults:@"passWord"] isKindOfClass:[NSNull class]]){
         
         _passWord.text = [Utilities getUserDefaults:@"passWord"];
     }
@@ -153,7 +153,10 @@
         
         if (Ns.integerValue==8001){
             [Utilities setUserDefaults:@"userName" content:_userName.text];
-            
+            NSLog(@"%@",  responseObject);
+            NSDictionary *dict = [responseObject objectForKey:@"result"];
+            //存入全局变量StorageMgr singletonStorageMgr中以便以后在收藏中调用
+            [[StorageMgr singletonStorageMgr] addKey:@"memberId" andValue:[dict objectForKey:@"memberId"]];
             [self tiaozhuan];
         } if (Ns.integerValue==8017||Ns.integerValue==8022||Ns.integerValue==8027||Ns.integerValue==8028){
             [Utilities popUpAlertViewWithMsg:@"亲！您的号码不存在，请先注册吧" andTitle:nil onView:self];
@@ -190,7 +193,7 @@
     } failure:^(NSError *error) {
         NSLog(@"get error = %@", error.description);
         if (error.code==-1009) {
-           // [Utilities popUpAlertViewWithMsg:[NSString stringWithFormat:@"%ld",(long)error.code] andTitle:nil onView:self];
+          
              [Utilities popUpAlertViewWithMsg:@"请链接好网络后再来尝试！" andTitle:nil onView:self];
             _login.userInteractionEnabled=NO;
             _login.backgroundColor=[UIColor lightGrayColor];
