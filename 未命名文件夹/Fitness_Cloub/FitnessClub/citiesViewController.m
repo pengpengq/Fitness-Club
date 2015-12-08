@@ -83,10 +83,6 @@
 
 
 #pragma mark - tableView
-
-
-
-
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
     
@@ -175,21 +171,11 @@
     NSNotification *note=[[NSNotification alloc]initWithName:@"updateProduct" object:nil userInfo:dict];
     //用通知中心实例发送上述通知
     [notecenter performSelectorOnMainThread:@selector(postNotification:) withObject:note waitUntilDone:YES ];
-    [self backTofirst];
-    
+    [self.navigationController popViewControllerAnimated:YES];
     
 }
 -(void)backTofirst{
-//     UIViewController *view = [Utilities getStoryboardInstance:@"Main" byIdentity:@"home"];
-//    [self.navigationController pushViewController:view  animated:YES];
-//    self.navigationController.navigationBarHidden=YES;
-//    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] init];
-//    backItem.title = _cityNameLabel.text;
-//    self.navigationItem.backBarButtonItem = backItem;
-//    UINavigationController *view =[Utilities getStoryboardInstance:@"Main" byIdentity:@"home"];
-//      view.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-//    [self presentViewController:view animated:YES completion:nil];
-    [self.navigationController popViewControllerAnimated:YES];
+    
   }
 
 

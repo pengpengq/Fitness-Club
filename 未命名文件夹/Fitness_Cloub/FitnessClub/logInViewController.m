@@ -13,6 +13,7 @@
     NSString *Ns;
 }
 @property (weak, nonatomic) IBOutlet UIView *userNameView;
+- (IBAction)closekey:(UITextField *)sender;
 @property (weak, nonatomic) IBOutlet UIView *passWordView;
 
 @end
@@ -106,7 +107,12 @@
      [self request];
     NSString *username = _userName.text;
     NSString *password = _passWord.text;
-    
+    username=[username stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    password=[password stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    if ([Utilities getStoryboardInstance:@"Main" byIdentity:@"clubdetail"]) {
+        [self.navigationController popViewControllerAnimated:NO];
+
+    }
     [self loginWithUsername:username andPassword:password];
     
 
@@ -202,4 +208,9 @@
         }];
 }
 
+- (IBAction)closekey:(UITextField *)sender {
+    
+    [_passWord resignFirstResponder];
+    [_userName resignFirstResponder];
+}
 @end

@@ -312,7 +312,7 @@
         return;
     }
    NSLog(@"wolaile");
-    
+    NSString *type = @"";
     NSString *request = @"/mySelfController/addFavorites";
     NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:num,@"clubId",[[StorageMgr singletonStorageMgr] objectForKey:@"memberId"],@"memberId",@"0",@"type",nil];
         NSLog(@"parameters = %@",parameters);
@@ -370,13 +370,13 @@
     NSLog(@"Intro callback");
     
     UITabBarController *view =[Utilities getStoryboardInstance:@"Main" byIdentity:@"logIn"];
-    
-    UINavigationController* navigation = [[UINavigationController alloc] initWithRootViewController:view];
-    
-    navigation.navigationBarHidden = YES;
-    navigation.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    [self presentViewController:navigation animated:YES completion:nil];
-    //[navigation pushViewController:view  animated:YES];
+   [self.navigationController pushViewController:view  animated:YES];
+//    UINavigationController* navigation = [[UINavigationController alloc] initWithRootViewController:view];
+//    
+//    navigation.navigationBarHidden = YES;
+//    navigation.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+//    [self presentViewController:navigation animated:YES completion:nil];
+//    [navigation pushViewController:view  animated:YES];
     
 }
 - (void)showOkayCancelAlert {

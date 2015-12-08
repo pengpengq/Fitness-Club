@@ -70,6 +70,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                                         <connections>
+                                            <action selector="closekey:" destination="BYZ-38-t0r" eventType="touchDown" id="qDH-Y2-ahY"/>
                                             <action selector="textFiled:" destination="BYZ-38-t0r" eventType="editingDidEndOnExit" id="gf7-dn-Bx6"/>
                                             <outlet property="delegate" destination="BYZ-38-t0r" id="kzt-YT-csu"/>
                                         </connections>
@@ -107,6 +108,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                         <connections>
+                                            <action selector="closekey:" destination="BYZ-38-t0r" eventType="touchDown" id="bWn-9e-s89"/>
                                             <action selector="textFiled:" destination="BYZ-38-t0r" eventType="editingDidEndOnExit" id="NVb-pP-yfw"/>
                                             <outlet property="delegate" destination="BYZ-38-t0r" id="4Vm-TH-0JQ"/>
                                         </connections>
@@ -1590,7 +1592,7 @@
         <!--会所详情-->
         <scene sceneID="UX9-8C-cjB">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="ETg-l3-LZO" customClass="clubDetailsViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="clubdetail" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ETg-l3-LZO" customClass="clubDetailsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="UuV-TW-zHw"/>
                         <viewControllerLayoutGuide type="bottom" id="ukE-gg-hiU"/>
