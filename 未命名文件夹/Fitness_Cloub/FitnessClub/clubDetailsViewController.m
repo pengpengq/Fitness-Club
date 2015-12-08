@@ -31,9 +31,13 @@
 @implementation clubDetailsViewController
 
 - (void)viewDidLoad {
-    a=YES;
-    [super viewDidLoad];
     
+    [super viewDidLoad];
+    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] init];
+    backItem.title = @"";
+    self.navigationItem.backBarButtonItem = backItem;
+    NSDictionary* textTitleOpt = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], NSForegroundColorAttributeName, nil];
+    [self.navigationController.navigationBar setTitleTextAttributes:textTitleOpt];
     _tableView.delegate=self;
     _tableView.dataSource=self;
     _objectForShow = [NSMutableArray new];
@@ -92,14 +96,14 @@
                 _clubTel.text=[rootDictory objectForKey:@"clubTel"];
                 [_clubLogoIV sd_setImageWithURL:[NSURL URLWithString:[rootDictory objectForKey:@"clubLogo"]] placeholderImage:[UIImage imageNamed:@"default"]];
                 _clubIntroduce.text=[rootDictory objectForKey:@"clubIntroduce"];
-                [_clubIntroduce sizeToFit];
-                CGRect rect=_headerView.frame;
-                rect.size.height = CGRectGetMaxY(_clubIntroduce.frame) + 10;
-                _headerView.frame = rect;
-                _tableView.tableHeaderView.frame = rect;
-                NSLog(@"tableHeaderViewHeight = %f", _tableView.tableHeaderView.frame.size.height);
-                NSLog(@"contentHeight = %f", _tableView.contentSize.height);
-                
+//                [_clubIntroduce sizeToFit];
+//                CGRect rect=_headerView.frame;
+//                rect.size.height = CGRectGetMaxY(_clubIntroduce.frame) + 10;
+//                _headerView.frame = rect;
+//                _tableView.tableHeaderView.frame = rect;
+//                NSLog(@"tableHeaderViewHeight = %f", _tableView.tableHeaderView.frame.size.height);
+//                NSLog(@"contentHeight = %f", _tableView.contentSize.height);
+//                
                 [_tableView reloadData];
             } else {
                 [Utilities popUpAlertViewWithMsg:[responseObject objectForKey:@"resultFlag"] andTitle:nil onView:nil];
@@ -147,13 +151,13 @@
             _clubTel.text=[rootDictory objectForKey:@"clubTel"];
             [_clubLogoIV sd_setImageWithURL:[NSURL URLWithString:[rootDictory objectForKey:@"clubLogo"]] placeholderImage:[UIImage imageNamed:@"default"]];
             _clubIntroduce.text=[rootDictory objectForKey:@"clubIntroduce"];
-            [_clubIntroduce sizeToFit];
-            CGRect rect=_headerView.frame;
-            rect.size.height = CGRectGetMaxY(_clubIntroduce.frame) + 10;
-            _headerView.frame = rect;
-            _tableView.tableHeaderView.frame = rect;
-            NSLog(@"tableHeaderViewHeight = %f", _tableView.tableHeaderView.frame.size.height);
-            NSLog(@"contentHeight = %f", _tableView.contentSize.height);
+//            [_clubIntroduce sizeToFit];
+//            CGRect rect=_headerView.frame;
+//            rect.size.height = CGRectGetMaxY(_clubIntroduce.frame) + 10;
+//            _headerView.frame = rect;
+//            _tableView.tableHeaderView.frame = rect;
+//            NSLog(@"tableHeaderViewHeight = %f", _tableView.tableHeaderView.frame.size.height);
+//            NSLog(@"contentHeight = %f", _tableView.contentSize.height);
             
             [_tableView reloadData];
         } else {
@@ -300,8 +304,8 @@
     if ([[StorageMgr singletonStorageMgr] objectForKey:@"memberId"]==nil) {
          NSLog(@"wolaile222");
       
-       
-        [Utilities popUpAlertViewWithMsg:@"您还没登陆不能收藏哦！" andTitle:nil onView:self];
+        [self showOkayCancelAlert];
+      //  [Utilities popUpAlertViewWithMsg:@"您还没登陆不能收藏哦！" andTitle:nil onView:self];
 //        UIViewController *view = [Utilities getStoryboardInstance:@"Main" byIdentity:@"logIn"];
 //        [self.navigationController pushViewController:view  animated:YES];
        
@@ -375,7 +379,32 @@
     //[navigation pushViewController:view  animated:YES];
     
 }
+- (void)showOkayCancelAlert {
+    NSString *title = NSLocalizedString(@"提示", nil);
+    NSString *message = NSLocalizedString(@"您还没登陆不能收藏哦！", nil);
+    NSString *cancelButtonTitle = NSLocalizedString(@"留在本页", nil);
+    NSString *otherButtonTitle = NSLocalizedString(@"立即登陆", nil);
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+    
+    // Create the actions.
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:cancelButtonTitle style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+        NSLog(@"The \"Okay/Cancel\" alert's cancel action occured.");
+        
+    }];
+    
+    UIAlertAction *otherAction = [UIAlertAction actionWithTitle:otherButtonTitle style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        NSLog(@"The \"Okay/Cancel\" alert's other action occured.");
+        [self introDidFinish];
 
+    }];
+    
+    // Add the actions.
+    [alertController addAction:cancelAction];
+    [alertController addAction:otherAction];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
+}
 -(void)dealloc{
     
     _headerView=nil;

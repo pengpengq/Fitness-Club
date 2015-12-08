@@ -7,7 +7,6 @@
 //
 
 #import "courseDetailViewController.h"
-#import "courseObject.h"
 @interface courseDetailViewController ()
 @property(strong,nonatomic)NSMutableArray *objectForShow;
 
