@@ -33,18 +33,7 @@
         if ([[myCollectionObject objectForKey:@"resultFlag"] integerValue]==8001){
             //            //根据接口返回的数据结构拆解数据，用适当的容器（数据类型）盛放底层数据
             NSDictionary *rootDictory=[myCollectionObject objectForKey:@"result"];
-            //_headerBtnF.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageWithData:data]];
-            for (int i = 0; i < rootDictory.count; i ++) {
-                //                NSDictionary *dic = [dataArr objectAtIndex:i];
-                //                homeObject *model=[[homeObject alloc] initWithDictionary:dic];
-                //                [_objectForShow addObject:model];
-                //                UIButton *btn = [_btnArr objectAtIndex:i];
-                //                [btn sd_setBackgroundImageWithURL:[NSURL URLWithString:model.backimgurl ] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"default"]];
-            }
-            //
-        }else{
-            //[Utilities popUpAlertViewWithMsg:[responseObject objectForKey:@"resultFlag"] andTitle:nil];
-            [Utilities popUpAlertViewWithMsg:[myCollectionObject objectForKey:@"resultFlag"] andTitle:nil onView:nil];
+         
         }
     } failure:^(NSError *error) {
         NSLog(@"get error = %@", error.description);

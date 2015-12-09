@@ -36,6 +36,7 @@
 
 - (IBAction)entryAction:(UIButton *)sender {
     UIViewController *view = [Utilities getStoryboardInstance:@"Main" byIdentity:@"logIn"];
+    
     [self.navigationController pushViewController:view  animated:YES];
 }
 @end

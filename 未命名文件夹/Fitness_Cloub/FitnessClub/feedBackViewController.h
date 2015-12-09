@@ -10,5 +10,6 @@
 
 @interface feedBackViewController : UIViewController
 - (IBAction)resubmitAction:(UIButton *)sender;
+@property (strong, nonatomic) IBOutlet UIView *endView;
 
 @end
