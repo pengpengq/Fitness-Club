@@ -40,7 +40,7 @@
     //[self.navigationController.navigationBar setTitleTextAttributes:textTitleOpt];
     //self.navigationItem.title = @"";
     CGRect rect = _headerView.frame;
-    rect.size.height = 30;
+    rect.size.height = 40;
     _headerView.frame = rect;
     self.navigationController.navigationBar.barTintColor = UIColorFromRGB(100, 150, 100);
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];

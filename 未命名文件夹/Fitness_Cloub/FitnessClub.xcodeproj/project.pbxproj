@@ -25,7 +25,6 @@
 		9158CBFF1C145EBD00E8D377 /* nearByObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 9158CBFE1C145EBD00E8D377 /* nearByObject.m */; };
 		9158CC021C14776400E8D377 /* phoneNums.m in Sources */ = {isa = PBXBuildFile; fileRef = 9158CC011C14776400E8D377 /* phoneNums.m */; };
 		91E382CB1C05F9B800896049 /* citiesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91E382CA1C05F9B800896049 /* citiesViewController.m */; };
-		91E382CE1C0603B900896049 /* clubDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91E382CD1C0603B900896049 /* clubDetailsViewController.m */; };
 		91FFF7441C0F5E81002A99C9 /* MZTimerLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 91FFF7431C0F5E81002A99C9 /* MZTimerLabel.m */; };
 		C403B5841C0BDAD700AE6D15 /* FitnessClub.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C403B5821C0BDAD700AE6D15 /* FitnessClub.xcdatamodeld */; };
 		C45BED151C0BE895005623B9 /* citydict.plist in Resources */ = {isa = PBXBuildFile; fileRef = C45BED141C0BE895005623B9 /* citydict.plist */; };
@@ -79,8 +78,9 @@
 		C4ED21A71C06A59C009818A7 /* nearbyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4ED21A61C06A59C009818A7 /* nearbyViewController.m */; };
 		C4ED21B51C06D749009818A7 /* clubTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C4ED21B41C06D749009818A7 /* clubTableViewCell.m */; };
 		C4ED21B81C06D770009818A7 /* clubObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C4ED21B71C06D770009818A7 /* clubObject.m */; };
-		C4ED21BC1C06D7B0009818A7 /* courseObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C4ED21BB1C06D7B0009818A7 /* courseObject.m */; };
 		C4F80E191C08357500AD4F6C /* homeclubkindObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C4F80E181C08357500AD4F6C /* homeclubkindObject.m */; };
+		DC45933A1C1720DC00896A19 /* clubDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC4593391C1720DC00896A19 /* clubDetailsViewController.m */; };
+		DC45933D1C17254E00896A19 /* searchDisplayController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC45933C1C17254E00896A19 /* searchDisplayController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -134,7 +134,6 @@
 		91E382C91C05F9B800896049 /* citiesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = citiesViewController.h; sourceTree = "<group>"; };
 		91E382CA1C05F9B800896049 /* citiesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = citiesViewController.m; sourceTree = "<group>"; };
 		91E382CC1C0603B900896049 /* clubDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = clubDetailsViewController.h; sourceTree = "<group>"; };
-		91E382CD1C0603B900896049 /* clubDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = clubDetailsViewController.m; sourceTree = "<group>"; };
 		91FFF7421C0F5E81002A99C9 /* MZTimerLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZTimerLabel.h; sourceTree = "<group>"; };
 		91FFF7431C0F5E81002A99C9 /* MZTimerLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZTimerLabel.m; sourceTree = "<group>"; };
 		C403B5831C0BDAD700AE6D15 /* FitnessClub.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FitnessClub.xcdatamodel; sourceTree = "<group>"; };
@@ -233,11 +232,12 @@
 		C4ED21B41C06D749009818A7 /* clubTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = clubTableViewCell.m; sourceTree = "<group>"; };
 		C4ED21B61C06D770009818A7 /* clubObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = clubObject.h; sourceTree = "<group>"; };
 		C4ED21B71C06D770009818A7 /* clubObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = clubObject.m; sourceTree = "<group>"; };
-		C4ED21BA1C06D7B0009818A7 /* courseObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = courseObject.h; sourceTree = "<group>"; };
-		C4ED21BB1C06D7B0009818A7 /* courseObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = courseObject.m; sourceTree = "<group>"; };
 		C4F80E0B1C07E75300AD4F6C /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		C4F80E171C08357500AD4F6C /* homeclubkindObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = homeclubkindObject.h; sourceTree = "<group>"; };
 		C4F80E181C08357500AD4F6C /* homeclubkindObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = homeclubkindObject.m; sourceTree = "<group>"; };
+		DC4593391C1720DC00896A19 /* clubDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = clubDetailsViewController.m; sourceTree = "<group>"; };
+		DC45933B1C17254E00896A19 /* searchDisplayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = searchDisplayController.h; sourceTree = "<group>"; };
+		DC45933C1C17254E00896A19 /* searchDisplayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = searchDisplayController.m; sourceTree = "<group>"; };
 		E40E7B5840EBCD85497A96BA /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		F39564F36FD22154023AF932 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -495,8 +495,8 @@
 				C45BED161C0C1CDB005623B9 /* citiesTableViewCell.h */,
 				C45BED171C0C1CDB005623B9 /* citiesTableViewCell.m */,
 				C48330FB1C05512900EF0513 /* homeTableViewCell.h */,
-				C4ED21B31C06D749009818A7 /* clubTableViewCell.h */,
 				C48330FC1C05512900EF0513 /* homeTableViewCell.m */,
+				C4ED21B31C06D749009818A7 /* clubTableViewCell.h */,
 				C4ED21B41C06D749009818A7 /* clubTableViewCell.m */,
 				C4E632541C0D8FCB0076285D /* clubdateilTableViewCell.h */,
 				C4E632551C0D8FCB0076285D /* clubdateilTableViewCell.m */,
@@ -532,8 +532,6 @@
 				C45BED1A1C0C1E47005623B9 /* citiesobject.m */,
 				C4ED21B61C06D770009818A7 /* clubObject.h */,
 				C4ED21B71C06D770009818A7 /* clubObject.m */,
-				C4ED21BA1C06D7B0009818A7 /* courseObject.h */,
-				C4ED21BB1C06D7B0009818A7 /* courseObject.m */,
 				C4E632571C0D90020076285D /* clubdateilObject.h */,
 				C4E632581C0D90020076285D /* clubdateilObject.m */,
 				9158CBFD1C145EBD00E8D377 /* nearByObject.h */,
@@ -617,7 +615,7 @@
 			isa = PBXGroup;
 			children = (
 				91E382CC1C0603B900896049 /* clubDetailsViewController.h */,
-				91E382CD1C0603B900896049 /* clubDetailsViewController.m */,
+				DC4593391C1720DC00896A19 /* clubDetailsViewController.m */,
 			);
 			name = "会所详情";
 			sourceTree = "<group>";
@@ -666,6 +664,8 @@
 			children = (
 				C4E632461C0D36620076285D /* searchBarViewController.h */,
 				C4E632471C0D36620076285D /* searchBarViewController.m */,
+				DC45933B1C17254E00896A19 /* searchDisplayController.h */,
+				DC45933C1C17254E00896A19 /* searchDisplayController.m */,
 			);
 			name = "搜索";
 			sourceTree = "<group>";
@@ -870,7 +870,7 @@
 				C4ED21B51C06D749009818A7 /* clubTableViewCell.m in Sources */,
 				C4EB9DEB1C04489900A1F600 /* logInViewController.m in Sources */,
 				5096CCC11C1141B100471FB7 /* couponTableViewCell.m in Sources */,
-				C4ED21BC1C06D7B0009818A7 /* courseObject.m in Sources */,
+				DC45933A1C1720DC00896A19 /* clubDetailsViewController.m in Sources */,
 				C48330FA1C05504700EF0513 /* homeObject.m in Sources */,
 				C4EB9DFB1C044B8C00A1F600 /* NSString+Crypt.m in Sources */,
 				C4EB9DEE1C044AF100A1F600 /* Utilities.m in Sources */,
@@ -899,6 +899,7 @@
 				C483310C1C0599B200EF0513 /* ViewController.m in Sources */,
 				50FCA6F91C167FCE0020D11C /* LeafNotification.m in Sources */,
 				C4C81D131C0E9D490051B776 /* ECSlidingAnimationController.m in Sources */,
+				DC45933D1C17254E00896A19 /* searchDisplayController.m in Sources */,
 				C48331091C05999900EF0513 /* EAIntroView.m in Sources */,
 				C4EB9D8B1C043BF100A1F600 /* main.m in Sources */,
 				C4ED21921C06A1C2009818A7 /* myCollectionViewController.m in Sources */,
@@ -907,7 +908,6 @@
 				C4EB9E121C044EAB00A1F600 /* homeViewController.m in Sources */,
 				506F96CE1C17D16B00341240 /* myCollectionTableViewCell.m in Sources */,
 				C4ED218B1C06A0C6009818A7 /* personDetailsViewController.m in Sources */,
-				91E382CE1C0603B900896049 /* clubDetailsViewController.m in Sources */,
 				C4ED21A71C06A59C009818A7 /* nearbyViewController.m in Sources */,
 				C48331081C05999900EF0513 /* EAIntroPage.m in Sources */,
 				91FFF7441C0F5E81002A99C9 /* MZTimerLabel.m in Sources */,

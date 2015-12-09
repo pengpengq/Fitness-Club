@@ -86,6 +86,8 @@
     _headerView.frame = rect;
     self.navigationController.navigationBar.barTintColor = UIColorFromRGB(100, 150, 100);
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    NSDictionary* textTitleOpt = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], NSForegroundColorAttributeName, nil];
+    [self.navigationController.navigationBar setTitleTextAttributes:textTitleOpt];
     UIBarButtonItem *backItem = [[UIBarButtonItem alloc] init];
     backItem.title = @"";
     self.navigationItem.backBarButtonItem = backItem;
