@@ -11,7 +11,7 @@
 #import "clubdateilObject.h"
 #import "homeObject.h"
 #import "courseDetailViewController.h"
-@interface clubDetailsViewController ()<UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate>
+@interface clubDetailsViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
     BOOL a;
     NSInteger perPage;
@@ -21,11 +21,12 @@
     NSString *ns;
     NSString *num;
     
+    
 }
 @property (weak, nonatomic) IBOutlet UIView *headerView;
 @property(strong,nonatomic)NSMutableArray *muArr;
 @property(strong,nonatomic)clubdateilObject *content;
-@property(strong,nonatomic)UIAlertController *alert;
+@property(strong,nonatomic)NSString *type;
 @end
 
 @implementation clubDetailsViewController
@@ -41,6 +42,7 @@
     _tableView.delegate=self;
     _tableView.dataSource=self;
     _objectForShow = [NSMutableArray new];
+    _type=[[NSString alloc]init];
     [self initializeData];
     [self uiConfiguration];
     //[self secondRequest];
@@ -58,6 +60,7 @@
     loadingMore=YES;
     //请求热门的会所列表
     [self request];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -65,7 +68,8 @@
     // Dispose of any resources that can be recreated.
 }
 -(void)request{
-    if ([[StorageMgr singletonStorageMgr] objectForKey:@"memberId"]==nil) {
+    //用户没登陆的请求
+    if ([[StorageMgr singletonStorageMgr] objectForKey:@"memberId"] == nil || [[[StorageMgr singletonStorageMgr] objectForKey:@"memberId"] isKindOfClass:[NSNull class]]) {
         num=_clubID;
         NSLog(@"num=%@",num);
         NSString *request = @"/clubController/getClubDetails";
@@ -79,6 +83,7 @@
                 [aiv stopAnimating];
                 [self endRefreshing];
                 NSDictionary *rootDictory=[responseObject objectForKey:@"result"];
+                
                 NSArray *dataArr=[rootDictory objectForKey:@"experienceInfos"];
                 _objectForShow=nil;
                 _objectForShow=[NSMutableArray new];
@@ -119,61 +124,76 @@
             
         }];
     
-    }
-    else{
-    num=_clubID;
-    NSLog(@"num=%@",num);
-    NSString *request = @"/clubController/getClubDetails";
-    NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:num,@"clubKeyId",[[StorageMgr singletonStorageMgr] objectForKey:@"memberId"],@"memberId",nil];
-    NSLog(@"parameters = %@",parameters);
-    [RequestAPI getURL:request withParameters:parameters success:^(id responseObject) {
-        NSLog(@"get responseObject = %@", responseObject);
-        ns=[responseObject objectForKey:@"resultFlag"];
-        if ([ns integerValue]==8001){
-            //根据接口返回的数据结构拆解数据，用适当的容器（数据类型）盛放底层数据
-            [aiv stopAnimating];
-            [self endRefreshing];
-            NSDictionary *rootDictory=[responseObject objectForKey:@"result"];
-            NSArray *dataArr=[rootDictory objectForKey:@"experienceInfos"];
-            _objectForShow=nil;
-            _objectForShow=[NSMutableArray new];
-            
-            for (NSDictionary *dic in dataArr) {
-                clubdateilObject *object=[[clubdateilObject alloc]initWithDictionary:dic];
-                //            NSLog(@"_objw=%@",object);
-                [_objectForShow addObject:object];
-                //            NSLog(@"_objectForShow=%@",_objectForShow);
+    } else {
+        NSLog(@"DuiLe");
+        //用户登录后的请求
+        num=_clubID;
+        NSLog(@"num=%@",num);
+        NSString *request = @"/clubController/getClubDetails";
+        NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:num,@"clubKeyId",[[StorageMgr singletonStorageMgr] objectForKey:@"memberId"],@"memberId",nil];
+        NSLog(@"parameters = %@",parameters);
+        
+        [RequestAPI getURL:request withParameters:parameters success:^(id responseObject) {
+            NSLog(@"get responseObject = %@", responseObject);
+            ns=[responseObject objectForKey:@"resultFlag"];
+            if ([ns integerValue]==8001){
+                //根据接口返回的数据结构拆解数据，用适当的容器（数据类型）盛放底层数据
+                [aiv stopAnimating];
+                [self endRefreshing];
+                NSDictionary *rootDictory=[responseObject objectForKey:@"result"];
+                
+                _type=[rootDictory objectForKey:@"isFavicons"];
+                NSLog(@"isFavicons=%@",_type);
+                if ([_type integerValue] == 1) {
+                    _collection.title = @"取消收藏";
+                }else if ([_type isEqual:@"0"]){
+                    _collection.title = @"收藏";
+                }
+                _clubAddress.text=[rootDictory objectForKey:@"clubAddressB"];
+                _clubTime.text=[rootDictory objectForKey:@"clubTime"];
+                _clubName.text=[rootDictory objectForKey:@"clubName"];
+                _clubTel.text=[rootDictory objectForKey:@"clubTel"];
+                [_clubLogoIV sd_setImageWithURL:[NSURL URLWithString:[rootDictory objectForKey:@"clubLogo"]] placeholderImage:[UIImage imageNamed:@"default"]];
+                _clubIntroduce.text=[rootDictory objectForKey:@"clubIntroduce"];
+                
+                
+                
+                //获取会所体验券详情
+                
+                NSArray *dataArr=[rootDictory objectForKey:@"experienceInfos"];
+                _objectForShow=nil;
+                _objectForShow=[NSMutableArray new];
+                
+                
+                for (NSDictionary *dic in dataArr) {
+                    clubdateilObject *object=[[clubdateilObject alloc]initWithDictionary:dic];
+                    //            NSLog(@"_objw=%@",object);
+                    [_objectForShow addObject:object];
+                    //            NSLog(@"_objectForShow=%@",_objectForShow);
+                }
+                
+                //            [_clubIntroduce sizeToFit];
+                //            CGRect rect=_headerView.frame;
+                //            rect.size.height = CGRectGetMaxY(_clubIntroduce.frame) + 10;
+                //            _headerView.frame = rect;
+                //            _tableView.tableHeaderView.frame = rect;
+                //            NSLog(@"tableHeaderViewHeight = %f",          _tableView.tableHeaderView.frame.size.height);
+                //            NSLog(@"contentHeight = %f", _tableView.contentSize.height);
+                [_tableView reloadData];
+            } else {
+                [Utilities popUpAlertViewWithMsg:[responseObject objectForKey:@"resultFlag"] andTitle:nil onView:nil];
             }
             
-            _clubAddress.text=[rootDictory objectForKey:@"clubAddressB"];
-            _clubTime.text=[rootDictory objectForKey:@"clubTime"];
-            _clubName.text=[rootDictory objectForKey:@"clubName"];
-            _clubTel.text=[rootDictory objectForKey:@"clubTel"];
-            [_clubLogoIV sd_setImageWithURL:[NSURL URLWithString:[rootDictory objectForKey:@"clubLogo"]] placeholderImage:[UIImage imageNamed:@"default"]];
-            _clubIntroduce.text=[rootDictory objectForKey:@"clubIntroduce"];
-//            [_clubIntroduce sizeToFit];
-//            CGRect rect=_headerView.frame;
-//            rect.size.height = CGRectGetMaxY(_clubIntroduce.frame) + 10;
-//            _headerView.frame = rect;
-//            _tableView.tableHeaderView.frame = rect;
-//            NSLog(@"tableHeaderViewHeight = %f", _tableView.tableHeaderView.frame.size.height);
-//            NSLog(@"contentHeight = %f", _tableView.contentSize.height);
             
-            [_tableView reloadData];
-        } else {
-            [Utilities popUpAlertViewWithMsg:[responseObject objectForKey:@"resultFlag"] andTitle:nil onView:nil];
-        }
-
-    
-    } failure:^(NSError *error) {
-        NSLog(@"get error = %@", error.description);
-        [aiv stopAnimating];
-        [self endRefreshing];
-        if (error.code==-1009) {
-            [Utilities popUpAlertViewWithMsg:@"请检查你的网络再来尝试！"andTitle:nil onView:self];
-        }
-        
-    }];
+        } failure:^(NSError *error) {
+            NSLog(@"get error = %@", error.description);
+            [aiv stopAnimating];
+            [self endRefreshing];
+            if (error.code==-1009) {
+                [Utilities popUpAlertViewWithMsg:@"请检查你的网络再来尝试！"andTitle:nil onView:self];
+            }
+            
+        }];
 
     }
     
@@ -301,49 +321,56 @@
 - (IBAction)collectionAction:(UIBarButtonItem *)sender {
     
     //调用全局变量判断用户是否收藏
-    if ([[StorageMgr singletonStorageMgr] objectForKey:@"memberId"]==nil) {
-         NSLog(@"wolaile222");
-      
+    if ([[StorageMgr singletonStorageMgr] objectForKey:@"memberId"] == nil || [[[StorageMgr singletonStorageMgr] objectForKey:@"memberId"] isKindOfClass:[NSNull class]]) {
+        
         [self showOkayCancelAlert];
-      //  [Utilities popUpAlertViewWithMsg:@"您还没登陆不能收藏哦！" andTitle:nil onView:self];
-//        UIViewController *view = [Utilities getStoryboardInstance:@"Main" byIdentity:@"logIn"];
-//        [self.navigationController pushViewController:view  animated:YES];
-       
         return;
     }
-   NSLog(@"wolaile");
-    NSString *type = @"";
+    
+    
+    //用户添加收藏
+    NSLog(@"wolaile3333");
     NSString *request = @"/mySelfController/addFavorites";
-    NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:num,@"clubId",[[StorageMgr singletonStorageMgr] objectForKey:@"memberId"],@"memberId",@"0",@"type",nil];
-        NSLog(@"parameters = %@",parameters);
-        [RequestAPI getURL:request withParameters:parameters success:^(id responseObject) {
-            NSLog(@"get responseObject = %@", responseObject);
-            ns=[responseObject objectForKey:@"resultFlag"];
-            if ([ns integerValue]==8001){
-                
-                
+    NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:num,@"clubId",[[StorageMgr singletonStorageMgr] objectForKey:@"memberId"],@"memberId",[_type integerValue] == 1 ? @"0" : @"1",@"type",nil];
+    NSLog(@"parameters = %@",parameters);
+    [RequestAPI getURL:request withParameters:parameters success:^(id responseObject) {
+        NSLog(@"get responseObject = %@", responseObject);
+        ns=[responseObject objectForKey:@"resultFlag"];
+        if ([ns integerValue]==8001){
+          //  [aiv stopAnimating];
+            
+//            sender.title=@"取消收藏";
+            if ([_type integerValue] == 1) {
+                [Utilities popUpAlertViewWithMsg:@"取消收藏成功！" andTitle:nil onView:self];
+                _type = @"0 ";
+                _collection.title = @"收藏";
+            } else {
+                [Utilities popUpAlertViewWithMsg:@"收藏成功！" andTitle:nil onView:self];
+                _type = @"1";
+                _collection.title = @"取消收藏";
             }
-            
         }
-        failure:^(NSError *error) {
-            NSLog(@"get error = %@", error.description);
-            [Utilities popUpAlertViewWithMsg:@"请检查网络再来尝试！" andTitle:nil onView:self];
-            
-        }];
+    }failure:^(NSError *error) {
+        NSLog(@"get error = %@", error.description);
+      //  [aiv stopAnimating];
 
+        [Utilities popUpAlertViewWithMsg:@"收藏失败，请检查网络再来尝试！" andTitle:nil onView:self];
         
+    }];
+
+    
     
    
-    
-    if (a) {
-        a=NO;
-        [sender setBackgroundImage:[UIImage imageNamed:@""] forState:UIControlStateNormal  barMetrics:UIBarMetricsDefault];
-        
-    }else if (a==NO){
-        a=YES;
-        [sender setBackgroundImage:[UIImage imageNamed:@""] forState:UIControlStateNormal  barMetrics:UIBarMetricsDefault];
-        
-    }
+//
+//    if (a) {
+//        a=NO;
+//        [sender setBackgroundImage:[UIImage imageNamed:@""] forState:UIControlStateNormal  barMetrics:UIBarMetricsDefault];
+//        
+//    }else if (a==NO){
+//        a=YES;
+//        [sender setBackgroundImage:[UIImage imageNamed:@""] forState:UIControlStateNormal  barMetrics:UIBarMetricsDefault];
+//        
+//    }
 
     
 }
@@ -357,26 +384,12 @@
     }
 }
 
-- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex;{
-    if (buttonIndex == 0) {
-        return;
-    }
-    else if (buttonIndex ==1){
-        [self introDidFinish];
-    }
-    
-}
+
 - (void)introDidFinish {
     NSLog(@"Intro callback");
     
     UITabBarController *view =[Utilities getStoryboardInstance:@"Main" byIdentity:@"logIn"];
    [self.navigationController pushViewController:view  animated:YES];
-//    UINavigationController* navigation = [[UINavigationController alloc] initWithRootViewController:view];
-//    
-//    navigation.navigationBarHidden = YES;
-//    navigation.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-//    [self presentViewController:navigation animated:YES completion:nil];
-//    [navigation pushViewController:view  animated:YES];
     
 }
 - (void)showOkayCancelAlert {

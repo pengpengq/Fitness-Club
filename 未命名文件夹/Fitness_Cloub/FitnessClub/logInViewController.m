@@ -110,7 +110,7 @@
     username=[username stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     password=[password stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     if ([Utilities getStoryboardInstance:@"Main" byIdentity:@"clubdetail"]) {
-        [self.navigationController popViewControllerAnimated:NO];
+        [self.navigationController popViewControllerAnimated:YES];
 
     }
     [self loginWithUsername:username andPassword:password];
@@ -163,6 +163,7 @@
             NSDictionary *dict = [responseObject objectForKey:@"result"];
             //存入全局变量StorageMgr singletonStorageMgr中以便以后在收藏中调用
             [[StorageMgr singletonStorageMgr] addKey:@"memberId" andValue:[dict objectForKey:@"memberId"]];
+            
             [self tiaozhuan];
         } if (Ns.integerValue==8017||Ns.integerValue==8022||Ns.integerValue==8027||Ns.integerValue==8028){
             [Utilities popUpAlertViewWithMsg:@"亲！您的号码不存在，请先注册吧" andTitle:nil onView:self];
@@ -203,6 +204,10 @@
              [Utilities popUpAlertViewWithMsg:@"请链接好网络后再来尝试！" andTitle:nil onView:self];
             _login.userInteractionEnabled=NO;
             _login.backgroundColor=[UIColor lightGrayColor];
+        }else{
+            
+            [Utilities popUpAlertViewWithMsg:@"网络不通畅，请稍后再试！！" andTitle:nil onView:self];
+            
         }
         return ;
         }];
@@ -212,5 +217,11 @@
     
     [_passWord resignFirstResponder];
     [_userName resignFirstResponder];
+}
+-(void)dealloc{
+    _passWord = nil;
+    _userName = nil;
+    _login = nil;
+    
 }
 @end
