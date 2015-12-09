@@ -41,27 +41,22 @@
             _useLabel.text = [rootDictory objectForKey:@"useDate"];
             _endLabel.text = [rootDictory objectForKey:@"endDate"];
             _telLabel.text = [rootDictory objectForKey:@"clubTel"];
-            //_priceLabel.text = [rootDictory objectForKey:@"currentPrice"];
+            _priceLabel.text = [[rootDictory objectForKey:@"currentPrice"]stringValue];
             _ruleLabel.text = [rootDictory objectForKey:@"rules"];
+            _eAddressLabel.text =   [rootDictory objectForKey:@"eAddress"];
             [_logoimageView sd_setImageWithURL:[NSURL URLWithString:[rootDictory objectForKey:@"eLogo"]] placeholderImage:[UIImage imageNamed:@"default"]];
-            //_headerBtnF.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageWithData:data]];
-            for (int i = 0; i < rootDictory.count; i ++) {
-                //                NSDictionary *dic = [dataArr objectAtIndex:i];
-                //                homeObject *model=[[homeObject alloc] initWithDictionary:dic];
-                //                [_objectForShow addObject:model];
-                //                UIButton *btn = [_btnArr objectAtIndex:i];
-                //                [btn sd_setBackgroundImageWithURL:[NSURL URLWithString:model.backimgurl ] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"default"]];
-            }
-            //
-        }else{
-            //[Utilities popUpAlertViewWithMsg:[responseObject objectForKey:@"resultFlag"] andTitle:nil];
-            [Utilities popUpAlertViewWithMsg:[couponObject objectForKey:@"resultFlag"] andTitle:nil onView:nil];
         }
-    } failure:^(NSError *error) {
-        NSLog(@"get error = %@", error.description);
-    }];
-    
+            
+        }failure:^(NSError *error) {
+            NSLog(@"get error = %@", error.description);
+            if (error.code==-1009) {
+                [Utilities popUpAlertViewWithMsg:@"请检查你的网络再来尝试！"andTitle:nil onView:self];
+            }
+        }];
 }
+
+
+
 
 /*
 #pragma mark - Navigation

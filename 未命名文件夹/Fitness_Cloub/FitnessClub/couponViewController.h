@@ -21,5 +21,6 @@
 @property (strong, nonatomic) IBOutlet UILabel *priceLabel;
 
 @property (strong, nonatomic) IBOutlet UILabel *ruleLabel;
+@property (strong, nonatomic) IBOutlet UILabel *eAddressLabel;
 
 @end
