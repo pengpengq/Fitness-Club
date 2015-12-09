@@ -23,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *clubAddress;
 @property (weak, nonatomic) IBOutlet UILabel *clubIntroduce;
 @property(strong,nonatomic) NSString *clubID;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *collection;
 
 
 

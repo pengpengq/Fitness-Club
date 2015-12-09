@@ -1605,7 +1605,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="LQc-io-V7P">
-                                    <rect key="frame" x="0.0" y="64" width="320" height="342"/>
+                                    <rect key="frame" x="0.0" y="64" width="320" height="348"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Xeh-26-DXJ">
@@ -1651,7 +1651,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4hf-fr-OAe">
-                                            <rect key="frame" x="144" y="284" width="33" height="16"/>
+                                            <rect key="frame" x="15" y="284" width="290" height="16"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -1678,12 +1678,13 @@
                                         <constraint firstItem="4hf-fr-OAe" firstAttribute="top" secondItem="trq-7s-B9S" secondAttribute="bottom" constant="2" id="PV7-8m-Byp"/>
                                         <constraint firstItem="CJa-cE-b1d" firstAttribute="top" secondItem="wTQ-s2-V1m" secondAttribute="bottom" constant="5" id="RrK-SU-Rdh"/>
                                         <constraint firstItem="Xeh-26-DXJ" firstAttribute="top" secondItem="LQc-io-V7P" secondAttribute="top" id="TPy-Rc-8vW"/>
-                                        <constraint firstItem="4hf-fr-OAe" firstAttribute="centerX" secondItem="LQc-io-V7P" secondAttribute="centerX" id="XmH-Qu-Ynk"/>
                                         <constraint firstItem="hLt-et-dDi" firstAttribute="centerX" secondItem="LQc-io-V7P" secondAttribute="centerX" id="cQW-v6-2Js"/>
                                         <constraint firstItem="trq-7s-B9S" firstAttribute="top" secondItem="7pR-3K-5QG" secondAttribute="bottom" constant="10" id="erf-QY-jLT"/>
                                         <constraint firstItem="7pR-3K-5QG" firstAttribute="leading" secondItem="LQc-io-V7P" secondAttribute="leading" constant="15" id="iso-HI-hhJ"/>
+                                        <constraint firstAttribute="trailing" secondItem="4hf-fr-OAe" secondAttribute="trailing" constant="15" id="lm3-bk-tm6"/>
                                         <constraint firstItem="2JP-0X-gYj" firstAttribute="centerY" secondItem="7pR-3K-5QG" secondAttribute="centerY" id="pPx-RZ-HQV"/>
                                         <constraint firstItem="DJ4-lx-4Qb" firstAttribute="top" secondItem="hLt-et-dDi" secondAttribute="bottom" constant="10" id="phc-aq-LRB"/>
+                                        <constraint firstItem="4hf-fr-OAe" firstAttribute="leading" secondItem="LQc-io-V7P" secondAttribute="leading" constant="15" id="saf-II-NnK"/>
                                         <constraint firstItem="wTQ-s2-V1m" firstAttribute="centerX" secondItem="trq-7s-B9S" secondAttribute="centerX" id="tUs-yd-5hk"/>
                                         <constraint firstItem="7pR-3K-5QG" firstAttribute="top" secondItem="Xeh-26-DXJ" secondAttribute="bottom" constant="60" id="vUn-au-TrI"/>
                                         <constraint firstItem="Xeh-26-DXJ" firstAttribute="leading" secondItem="LQc-io-V7P" secondAttribute="leading" id="w0F-mo-g2P"/>
@@ -1692,7 +1693,7 @@
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="clubdetailcell" rowHeight="99" id="N6u-BA-BMM" customClass="clubdateilTableViewCell">
-                                        <rect key="frame" x="0.0" y="434" width="320" height="99"/>
+                                        <rect key="frame" x="0.0" y="440" width="320" height="99"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="N6u-BA-BMM" id="EfK-q0-qgM">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="98.5"/>
@@ -1805,6 +1806,7 @@
                         <outlet property="clubName" destination="hLt-et-dDi" id="yBO-zs-iFF"/>
                         <outlet property="clubTel" destination="2JP-0X-gYj" id="hsb-Fn-WOf"/>
                         <outlet property="clubTime" destination="DJ4-lx-4Qb" id="s1f-6K-01T"/>
+                        <outlet property="collection" destination="IZl-4r-RpU" id="UmL-Le-R6T"/>
                         <outlet property="headerView" destination="LQc-io-V7P" id="6DI-QQ-nUo"/>
                         <outlet property="tableView" destination="uZ3-7z-F1m" id="Lqi-lB-ZEU"/>
                     </connections>
