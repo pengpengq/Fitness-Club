@@ -35,10 +35,7 @@
 */
 
 - (IBAction)entryAction:(UIButton *)sender {
-    UIViewController *view = [Utilities getStoryboardInstance:@"Main" byIdentity:@"entry"];
-    UINavigationController* navigation = [[UINavigationController alloc] initWithRootViewController:view];
-    navigation.navigationBarHidden = YES;
-    navigation.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-    [self presentViewController:navigation animated:YES completion:nil];
+    UIViewController *view = [Utilities getStoryboardInstance:@"Main" byIdentity:@"logIn"];
+    [self.navigationController pushViewController:view  animated:YES];
 }
 @end

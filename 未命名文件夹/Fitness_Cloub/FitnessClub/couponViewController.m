@@ -68,7 +68,6 @@
     
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    
     return 1;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -76,14 +75,13 @@
     return _mutArray.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    couponTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    couponTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"dell"];
     if (!cell) {
-        cell = [[couponTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+        cell = [[couponTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"dell"];
     }
     couponObject *object = [_mutArray objectAtIndex:indexPath.row];
     NSLog(@"object=%@",object);
     [cell.logoimageView sd_setImageWithURL:[NSURL URLWithString:object.logo] placeholderImage:[UIImage imageNamed:@"default"]];
-    
     cell.clubnameLabel.text=object.name;
     cell.telLabel.text=object.tel;
     cell.endLabel.text=object.enddate;
@@ -92,15 +90,12 @@
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
     return UI_SCREEN_W / 3;
-    
-    
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-}/*
+}
+/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation

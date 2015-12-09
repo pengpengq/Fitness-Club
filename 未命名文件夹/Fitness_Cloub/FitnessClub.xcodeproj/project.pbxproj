@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		08DC0DC90B9B6CBD5D740ACA /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F39564F36FD22154023AF932 /* libPods.a */; };
+		506F96CA1C17C9F400341240 /* myCollectionObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 506F96C91C17C9F400341240 /* myCollectionObject.m */; };
+		506F96CE1C17D16B00341240 /* myCollectionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 506F96CD1C17D16B00341240 /* myCollectionTableViewCell.m */; };
 		5096CCB91C11416B00471FB7 /* Person.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5096CCB81C11416B00471FB7 /* Person.storyboard */; };
 		5096CCC01C1141B100471FB7 /* couponObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 5096CCBB1C1141B100471FB7 /* couponObject.m */; };
 		5096CCC11C1141B100471FB7 /* couponTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5096CCBD1C1141B100471FB7 /* couponTableViewCell.m */; };
@@ -16,7 +18,9 @@
 		5096CCC81C1141FA00471FB7 /* feedBackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5096CCC71C1141FA00471FB7 /* feedBackViewController.m */; };
 		5096CCCB1C11421B00471FB7 /* reservationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5096CCCA1C11421B00471FB7 /* reservationViewController.m */; };
 		5096CCCE1C11423100471FB7 /* notLoggedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5096CCCD1C11423100471FB7 /* notLoggedViewController.m */; };
-		5096CCD11C11427300471FB7 /* MLKMenuPopover.m in Sources */ = {isa = PBXBuildFile; fileRef = 5096CCD01C11427300471FB7 /* MLKMenuPopover.m */; };
+		50FCA6F91C167FCE0020D11C /* LeafNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 50FCA6F81C167FCE0020D11C /* LeafNotification.m */; };
+		50FCA6FC1C167FDF0020D11C /* notification_success.png in Resources */ = {isa = PBXBuildFile; fileRef = 50FCA6FA1C167FDF0020D11C /* notification_success.png */; };
+		50FCA6FD1C167FDF0020D11C /* notification_success@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 50FCA6FB1C167FDF0020D11C /* notification_success@2x.png */; };
 		9158CBFC1C145E1500E8D377 /* nearByCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9158CBFB1C145E1500E8D377 /* nearByCell.m */; };
 		9158CBFF1C145EBD00E8D377 /* nearByObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 9158CBFE1C145EBD00E8D377 /* nearByObject.m */; };
 		9158CC021C14776400E8D377 /* phoneNums.m in Sources */ = {isa = PBXBuildFile; fileRef = 9158CC011C14776400E8D377 /* phoneNums.m */; };
@@ -97,6 +101,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		506F96C81C17C9F400341240 /* myCollectionObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = myCollectionObject.h; sourceTree = "<group>"; };
+		506F96C91C17C9F400341240 /* myCollectionObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = myCollectionObject.m; sourceTree = "<group>"; };
+		506F96CC1C17D16B00341240 /* myCollectionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = myCollectionTableViewCell.h; sourceTree = "<group>"; };
+		506F96CD1C17D16B00341240 /* myCollectionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = myCollectionTableViewCell.m; sourceTree = "<group>"; };
 		5096CCB81C11416B00471FB7 /* Person.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Person.storyboard; sourceTree = "<group>"; };
 		5096CCBA1C1141B100471FB7 /* couponObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = couponObject.h; sourceTree = "<group>"; };
 		5096CCBB1C1141B100471FB7 /* couponObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = couponObject.m; sourceTree = "<group>"; };
@@ -112,8 +120,10 @@
 		5096CCCA1C11421B00471FB7 /* reservationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = reservationViewController.m; sourceTree = "<group>"; };
 		5096CCCC1C11423100471FB7 /* notLoggedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = notLoggedViewController.h; sourceTree = "<group>"; };
 		5096CCCD1C11423100471FB7 /* notLoggedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = notLoggedViewController.m; sourceTree = "<group>"; };
-		5096CCCF1C11427300471FB7 /* MLKMenuPopover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLKMenuPopover.h; sourceTree = "<group>"; };
-		5096CCD01C11427300471FB7 /* MLKMenuPopover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLKMenuPopover.m; sourceTree = "<group>"; };
+		50FCA6F71C167FCE0020D11C /* LeafNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeafNotification.h; sourceTree = "<group>"; };
+		50FCA6F81C167FCE0020D11C /* LeafNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeafNotification.m; sourceTree = "<group>"; };
+		50FCA6FA1C167FDF0020D11C /* notification_success.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = notification_success.png; sourceTree = "<group>"; };
+		50FCA6FB1C167FDF0020D11C /* notification_success@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "notification_success@2x.png"; sourceTree = "<group>"; };
 		6CD53555DD79B5F9CCE380ED /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		9158CBFA1C145E1500E8D377 /* nearByCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nearByCell.h; sourceTree = "<group>"; };
 		9158CBFB1C145E1500E8D377 /* nearByCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = nearByCell.m; sourceTree = "<group>"; };
@@ -259,6 +269,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		506F96CB1C17CAD800341240 /* 个人信息 */ = {
+			isa = PBXGroup;
+			children = (
+				C4ED21891C06A0C6009818A7 /* personDetailsViewController.h */,
+				C4ED218A1C06A0C6009818A7 /* personDetailsViewController.m */,
+				C4ED218C1C06A15E009818A7 /* modifyingDataViewController.h */,
+				C4ED218D1C06A15E009818A7 /* modifyingDataViewController.m */,
+			);
+			name = "个人信息";
+			sourceTree = "<group>";
+		};
 		9189AE3B1C04C32B0029D48A /* 会所 */ = {
 			isa = PBXGroup;
 			children = (
@@ -273,19 +294,16 @@
 		9189AE3C1C04C36B0029D48A /* 个人中心 */ = {
 			isa = PBXGroup;
 			children = (
+				C4EB9E181C044F0200A1F600 /* personViewController.h */,
+				C4EB9E191C044F0200A1F600 /* personViewController.m */,
+				5096CCCC1C11423100471FB7 /* notLoggedViewController.h */,
+				5096CCCD1C11423100471FB7 /* notLoggedViewController.m */,
+				506F96CB1C17CAD800341240 /* 个人信息 */,
 				C4ED21A81C06ACC2009818A7 /* 优惠劵 */,
 				C4ED219B1C06A374009818A7 /* 服务条款 */,
 				C4ED21971C06A240009818A7 /* 意见反馈 */,
-				C4ED21931C06A1E6009818A7 /* 我的预约 */,
+				C4ED21931C06A1E6009818A7 /* 内存清理 */,
 				C4ED218F1C06A17C009818A7 /* 我的收藏 */,
-				C4EB9E181C044F0200A1F600 /* personViewController.h */,
-				C4EB9E191C044F0200A1F600 /* personViewController.m */,
-				C4ED21891C06A0C6009818A7 /* personDetailsViewController.h */,
-				C4ED218A1C06A0C6009818A7 /* personDetailsViewController.m */,
-				C4ED218C1C06A15E009818A7 /* modifyingDataViewController.h */,
-				C4ED218D1C06A15E009818A7 /* modifyingDataViewController.m */,
-				5096CCCC1C11423100471FB7 /* notLoggedViewController.h */,
-				5096CCCD1C11423100471FB7 /* notLoggedViewController.m */,
 			);
 			name = "个人中心";
 			sourceTree = "<group>";
@@ -329,6 +347,8 @@
 		C483310D1C059A2300EF0513 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				50FCA6FA1C167FDF0020D11C /* notification_success.png */,
+				50FCA6FB1C167FDF0020D11C /* notification_success@2x.png */,
 				C48331161C059A7800EF0513 /* supportcat@2x.png */,
 				C48331141C059A4800EF0513 /* introBg@2x.png */,
 				C483310E1C059A3900EF0513 /* 1.png */,
@@ -458,8 +478,8 @@
 				C48331051C05999900EF0513 /* EAIntroPage.m */,
 				C48331061C05999900EF0513 /* EAIntroView.h */,
 				C48331071C05999900EF0513 /* EAIntroView.m */,
-				5096CCCF1C11427300471FB7 /* MLKMenuPopover.h */,
-				5096CCD01C11427300471FB7 /* MLKMenuPopover.m */,
+				50FCA6F71C167FCE0020D11C /* LeafNotification.h */,
+				50FCA6F81C167FCE0020D11C /* LeafNotification.m */,
 				C4EB9DC71C0445C700A1F600 /* SCZ-BasicEncodingRules */,
 			);
 			name = 3rd;
@@ -554,19 +574,23 @@
 		C4ED218F1C06A17C009818A7 /* 我的收藏 */ = {
 			isa = PBXGroup;
 			children = (
+				506F96C81C17C9F400341240 /* myCollectionObject.h */,
+				506F96C91C17C9F400341240 /* myCollectionObject.m */,
+				506F96CC1C17D16B00341240 /* myCollectionTableViewCell.h */,
+				506F96CD1C17D16B00341240 /* myCollectionTableViewCell.m */,
 				C4ED21901C06A1C2009818A7 /* myCollectionViewController.h */,
 				C4ED21911C06A1C2009818A7 /* myCollectionViewController.m */,
 			);
 			name = "我的收藏";
 			sourceTree = "<group>";
 		};
-		C4ED21931C06A1E6009818A7 /* 我的预约 */ = {
+		C4ED21931C06A1E6009818A7 /* 内存清理 */ = {
 			isa = PBXGroup;
 			children = (
 				5096CCC91C11421B00471FB7 /* reservationViewController.h */,
 				5096CCCA1C11421B00471FB7 /* reservationViewController.m */,
 			);
-			name = "我的预约";
+			name = "内存清理";
 			sourceTree = "<group>";
 		};
 		C4ED21971C06A240009818A7 /* 意见反馈 */ = {
@@ -755,6 +779,7 @@
 				C48331131C059A3900EF0513 /* 2.png in Resources */,
 				C45BED151C0BE895005623B9 /* citydict.plist in Resources */,
 				C48331121C059A3900EF0513 /* 3.png in Resources */,
+				50FCA6FC1C167FDF0020D11C /* notification_success.png in Resources */,
 				C4E6324B1C0D37E90076285D /* Main.storyboard in Resources */,
 				C4EB9D9C1C043BF100A1F600 /* LaunchScreen.storyboard in Resources */,
 				C48331171C059A7800EF0513 /* supportcat@2x.png in Resources */,
@@ -762,6 +787,7 @@
 				C48331151C059A4800EF0513 /* introBg@2x.png in Resources */,
 				C483311A1C059A8600EF0513 /* femalecodertocat@2x.png in Resources */,
 				C483311B1C059A8600EF0513 /* original@2x.png in Resources */,
+				50FCA6FD1C167FDF0020D11C /* notification_success@2x.png in Resources */,
 				C4EB9D991C043BF100A1F600 /* Assets.xcassets in Resources */,
 				5096CCB91C11416B00471FB7 /* Person.storyboard in Resources */,
 			);
@@ -858,7 +884,6 @@
 				5096CCC21C1141B100471FB7 /* couponViewController.m in Sources */,
 				C4EB9E171C044EEE00A1F600 /* clubViewController.m in Sources */,
 				C4EB9DCA1C0445D900A1F600 /* BasicEncodingRules.m in Sources */,
-				5096CCD11C11427300471FB7 /* MLKMenuPopover.m in Sources */,
 				C4EB9D8E1C043BF100A1F600 /* AppDelegate.m in Sources */,
 				C48330FD1C05512900EF0513 /* homeTableViewCell.m in Sources */,
 				C4C81D151C0E9D490051B776 /* ECSlidingSegue.m in Sources */,
@@ -866,11 +891,13 @@
 				C4EB9DFA1C044B8C00A1F600 /* NSData+Base64.m in Sources */,
 				C45BED181C0C1CDB005623B9 /* citiesTableViewCell.m in Sources */,
 				C4ED21A31C06A424009818A7 /* courseDetailViewController.m in Sources */,
+				506F96CA1C17C9F400341240 /* myCollectionObject.m in Sources */,
 				5096CCCE1C11423100471FB7 /* notLoggedViewController.m in Sources */,
 				5096CCC01C1141B100471FB7 /* couponObject.m in Sources */,
 				C4F80E191C08357500AD4F6C /* homeclubkindObject.m in Sources */,
 				C48331021C05982B00EF0513 /* registerViewController.m in Sources */,
 				C483310C1C0599B200EF0513 /* ViewController.m in Sources */,
+				50FCA6F91C167FCE0020D11C /* LeafNotification.m in Sources */,
 				C4C81D131C0E9D490051B776 /* ECSlidingAnimationController.m in Sources */,
 				DC45933D1C17254E00896A19 /* searchDisplayController.m in Sources */,
 				C48331091C05999900EF0513 /* EAIntroView.m in Sources */,
@@ -879,6 +906,7 @@
 				C4C81D121C0E9D490051B776 /* ECPercentDrivenInteractiveTransition.m in Sources */,
 				C403B5841C0BDAD700AE6D15 /* FitnessClub.xcdatamodeld in Sources */,
 				C4EB9E121C044EAB00A1F600 /* homeViewController.m in Sources */,
+				506F96CE1C17D16B00341240 /* myCollectionTableViewCell.m in Sources */,
 				C4ED218B1C06A0C6009818A7 /* personDetailsViewController.m in Sources */,
 				C4ED21A71C06A59C009818A7 /* nearbyViewController.m in Sources */,
 				C48331081C05999900EF0513 /* EAIntroPage.m in Sources */,

@@ -34,4 +34,8 @@
 }
 */
 
+- (IBAction)exitaccout:(id)sender {
+    UIViewController *view = [Utilities getStoryboardInstance:@"Person" byIdentity:@"notlogged"];
+    [self.navigationController pushViewController:view  animated:YES];
+}
 @end

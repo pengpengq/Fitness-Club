@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface personDetailsViewController : UIViewController
+- (IBAction)exitaccout:(id)sender;
 
 @end
