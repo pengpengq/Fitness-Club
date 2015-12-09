@@ -22,12 +22,37 @@
     self.tableView.delegate = self;
     
     [self.view addSubview:self.tableView];
+    [self request];
     // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+-(void)request{
+    
+    NSString *request = @"/clubController/nearSearchClub";
+    NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:@"1", @"page", @"10", @"perPage",@"0510",@"city",@"120.31",@"jing",@"31.49",@"wei",@"0",@"type",nil];
+    [RequestAPI getURL:request withParameters:parameters success:^(id responseObject) {
+        NSLog(@"get responseObject = %@", responseObject);
+        if ([[responseObject objectForKey:@"resultFlag"] integerValue]==8001){
+            //根据接口返回的数据结构拆解数据，用适当的容器（数据类型）盛放底层数据
+            NSDictionary *rootDictory=[responseObject objectForKey:@"result"];
+            NSArray *dataArr=[rootDictory objectForKey:@"models"];
+            
+            
+        }else{
+            
+            
+            
+        }
+        
+    }failure:^(NSError *error) {
+        NSLog(@"get error = %@", error.description);
+    }];
+    
+    
 }
 
 /*

@@ -81,6 +81,7 @@
 		C4F80E191C08357500AD4F6C /* homeclubkindObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C4F80E181C08357500AD4F6C /* homeclubkindObject.m */; };
 		DC45933A1C1720DC00896A19 /* clubDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC4593391C1720DC00896A19 /* clubDetailsViewController.m */; };
 		DC45933D1C17254E00896A19 /* searchDisplayController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC45933C1C17254E00896A19 /* searchDisplayController.m */; };
+		DC54F7921C1810D3008DAA46 /* searchObject.m in Sources */ = {isa = PBXBuildFile; fileRef = DC54F7911C1810D3008DAA46 /* searchObject.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -238,6 +239,8 @@
 		DC4593391C1720DC00896A19 /* clubDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = clubDetailsViewController.m; sourceTree = "<group>"; };
 		DC45933B1C17254E00896A19 /* searchDisplayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = searchDisplayController.h; sourceTree = "<group>"; };
 		DC45933C1C17254E00896A19 /* searchDisplayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = searchDisplayController.m; sourceTree = "<group>"; };
+		DC54F7901C1810D3008DAA46 /* searchObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = searchObject.h; sourceTree = "<group>"; };
+		DC54F7911C1810D3008DAA46 /* searchObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = searchObject.m; sourceTree = "<group>"; };
 		E40E7B5840EBCD85497A96BA /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		F39564F36FD22154023AF932 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -536,6 +539,8 @@
 				C4E632581C0D90020076285D /* clubdateilObject.m */,
 				9158CBFD1C145EBD00E8D377 /* nearByObject.h */,
 				9158CBFE1C145EBD00E8D377 /* nearByObject.m */,
+				DC54F7901C1810D3008DAA46 /* searchObject.h */,
+				DC54F7911C1810D3008DAA46 /* searchObject.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -862,6 +867,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC54F7921C1810D3008DAA46 /* searchObject.m in Sources */,
 				9158CBFC1C145E1500E8D377 /* nearByCell.m in Sources */,
 				C4EB9DFD1C044B8C00A1F600 /* StorageMgr.m in Sources */,
 				C4EB9DFC1C044B8C00A1F600 /* RequestAPI.m in Sources */,
