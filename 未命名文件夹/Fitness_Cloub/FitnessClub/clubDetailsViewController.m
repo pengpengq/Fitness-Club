@@ -48,6 +48,21 @@
     //[self secondRequest];
     // Do any additional setup after loading the view.
 }
+
+
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    //创建单例化化通知中心实例
+    NSNotificationCenter *notecenter=[NSNotificationCenter defaultCenter];
+    //当任何对象（object:nil）发送出requestData时由当前类执行
+    [notecenter addObserverForName:@"requestData" object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note) {
+       
+        [self initializeData];
+        [_tableView reloadData];
+    }];
+}
+
 //菊花膜+初始数据
 -(void)initializeData{
     loadingMore=NO;

@@ -14,6 +14,7 @@
         UIActivityIndicatorView *aiv;
 }
 - (IBAction)nearbyBar:(UIBarButtonItem *)sender;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *cityBarBtn;
 
 
 @end
@@ -21,6 +22,7 @@
 @implementation clubViewController
 
 - (void)viewDidLoad {
+    _clubId=@"0510";
     [super viewDidLoad];
     _tableView.delegate=self;
     _tableView.dataSource=self;
@@ -29,6 +31,22 @@
     [self initializeData];
     
     // Do any additional setup after loading the view.
+}
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    //创建单例化化通知中心实例
+    NSNotificationCenter *notecenter=[NSNotificationCenter defaultCenter];
+    //当任何对象（object:nil）发送出updateProuct时由当前类执行(updateProductName:)的方法
+    [notecenter addObserverForName:@"updateProduct" object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note) {
+        NSDictionary *dict = note.userInfo;
+        NSString *city = dict[@"city"];
+        
+        _clubId=dict[@"id"];
+        NSLog(@"ID=%@",_clubId);
+        _cityBarBtn.title=city;
+        [self request];
+        [_tableView reloadData];
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -69,7 +87,7 @@
 
 -(void)request{
     NSString *request = @"/homepage/freeTrial";
-    NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:loadCount], @"page", [NSNumber numberWithInteger:perPage], @"perPage",@"0510",@"city",@"120.31",@"jing",@"31.49",@"wei",nil];
+    NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:loadCount], @"page", [NSNumber numberWithInteger:perPage], @"perPage",_clubId,@"city",@"120.31",@"jing",@"31.49",@"wei",nil];
     //NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:@"1",@"page",@"13",@"perPage",@"0510",@"city",@"120.31",@"jing",@"31.49",@"wei",nil];
     [RequestAPI getURL:request withParameters:parameters success:^(id responseObject) {
         NSLog(@"get responseObject = %@", responseObject);

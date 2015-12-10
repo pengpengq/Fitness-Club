@@ -1,13 +1,13 @@
 //
-//  nearByCell.h
+//  searchtableViewCell.h
 //  FitnessClub
 //
-//  Created by 姚国俊 on 15/12/6.
+//  Created by 米山 on 15/12/10.
 //  Copyright © 2015年 milaotou. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@interface nearByCell : UITableViewCell
+@interface searchtableViewCell : UITableViewCell
 
 @end

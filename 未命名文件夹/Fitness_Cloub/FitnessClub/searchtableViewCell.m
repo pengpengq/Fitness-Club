@@ -1,14 +1,14 @@
 //
-//  nearByCell.m
+//  searchtableViewCell.m
 //  FitnessClub
 //
-//  Created by 姚国俊 on 15/12/6.
+//  Created by 米山 on 15/12/10.
 //  Copyright © 2015年 milaotou. All rights reserved.
 //
 
-#import "nearByCell.h"
+#import "searchtableViewCell.h"
 
-@implementation nearByCell
+@implementation searchtableViewCell
 
 - (void)awakeFromNib {
     // Initialization code

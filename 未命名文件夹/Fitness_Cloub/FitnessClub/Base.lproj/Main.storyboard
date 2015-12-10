@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="gIR-lD-WjX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="33M-bj-SK7">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
@@ -403,7 +403,7 @@
         <!--Search Bar View Controller-->
         <scene sceneID="1qL-If-pfa">
             <objects>
-                <viewController storyboardIdentifier="search" useStoryboardIdentifierAsRestorationIdentifier="YES" id="cbX-WV-fko" customClass="searchBarViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="search" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="cbX-WV-fko" customClass="searchBarViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="eDi-AV-OF4"/>
                         <viewControllerLayoutGuide type="bottom" id="Dbt-QS-pWn"/>
@@ -419,12 +419,30 @@
                                     <outlet property="delegate" destination="cbX-WV-fko" id="QbX-QP-grv"/>
                                 </connections>
                             </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="BU8-SB-OSE">
+                                <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="gwl-3S-eGa" customClass="searchtableViewCell">
+                                        <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gwl-3S-eGa" id="9hG-xU-GVs">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="BU8-SB-OSE" firstAttribute="top" secondItem="lIG-uo-hG5" secondAttribute="bottom" id="1vC-LJ-0yG"/>
                             <constraint firstItem="lIG-uo-hG5" firstAttribute="top" secondItem="eDi-AV-OF4" secondAttribute="bottom" id="I9M-uX-bam"/>
                             <constraint firstAttribute="trailing" secondItem="lIG-uo-hG5" secondAttribute="trailing" id="QbY-Fz-d6w"/>
+                            <constraint firstItem="BU8-SB-OSE" firstAttribute="leading" secondItem="hAC-Tn-eh2" secondAttribute="leading" id="YhV-XV-yFf"/>
+                            <constraint firstAttribute="trailing" secondItem="BU8-SB-OSE" secondAttribute="trailing" id="cCd-HL-p3l"/>
+                            <constraint firstItem="Dbt-QS-pWn" firstAttribute="top" secondItem="BU8-SB-OSE" secondAttribute="bottom" id="dVp-KC-gXw"/>
                             <constraint firstItem="lIG-uo-hG5" firstAttribute="leading" secondItem="hAC-Tn-eh2" secondAttribute="leading" id="nYz-oU-nwV"/>
                         </constraints>
                     </view>
@@ -433,7 +451,9 @@
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
+                        <outlet property="searchBar" destination="lIG-uo-hG5" id="urb-Oa-aPu"/>
                         <outlet property="searchDisplayController" destination="q9e-Nu-14r" id="olV-XW-kgh"/>
+                        <outlet property="tableView" destination="BU8-SB-OSE" id="CgK-0D-QQ1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yxe-a8-zVp" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -996,6 +1016,7 @@
                                                 <constraint firstItem="AQ1-s0-KIl" firstAttribute="leading" secondItem="phR-qt-q5K" secondAttribute="leading" constant="5" id="Bkx-sZ-S4K"/>
                                                 <constraint firstAttribute="trailing" secondItem="AQ1-s0-KIl" secondAttribute="trailing" constant="5" id="E9d-he-KPY"/>
                                                 <constraint firstItem="AQ1-s0-KIl" firstAttribute="top" secondItem="phR-qt-q5K" secondAttribute="top" constant="5" id="FxM-Zy-tiT"/>
+                                                <constraint firstAttribute="bottom" secondItem="tS7-UU-TRJ" secondAttribute="bottom" constant="3.5" id="KZM-kg-bDa"/>
                                                 <constraint firstItem="zvd-2q-5Ra" firstAttribute="leading" secondItem="ifG-25-OxG" secondAttribute="trailing" constant="8" id="LE3-K7-ig5"/>
                                                 <constraint firstItem="tS7-UU-TRJ" firstAttribute="leading" secondItem="phR-qt-q5K" secondAttribute="leading" constant="8" id="UGt-y0-SS6"/>
                                                 <constraint firstItem="zvd-2q-5Ra" firstAttribute="centerY" secondItem="ifG-25-OxG" secondAttribute="centerY" id="UXc-YB-jD9"/>
@@ -1113,6 +1134,7 @@
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
+                        <outlet property="cityBarBtn" destination="G48-u6-44L" id="a3W-TV-g7R"/>
                         <outlet property="headerView" destination="L1c-99-sjw" id="Sci-Va-GuB"/>
                         <outlet property="searchBar" destination="l5z-N5-49B" id="kQC-T4-kLo"/>
                         <outlet property="tableView" destination="kJ4-m3-TEb" id="0eL-DI-DjS"/>
@@ -2031,7 +2053,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="zFL-IU-7d4" firstAttribute="centerY" secondItem="FfW-xQ-Z0o" secondAttribute="centerY" id="Bo9-V3-Opu"/>
                                     <constraint firstItem="zFL-IU-7d4" firstAttribute="centerX" secondItem="FfW-xQ-Z0o" secondAttribute="centerX" id="Ovl-a3-SXd"/>
@@ -2168,12 +2190,14 @@
                                     <constraint firstItem="qog-Pv-nlu" firstAttribute="bottom" secondItem="gTt-Au-rCe" secondAttribute="bottom" id="B5w-Wp-vvz"/>
                                     <constraint firstItem="mXF-Rr-PmI" firstAttribute="top" secondItem="qrp-nC-ziq" secondAttribute="bottom" constant="3" id="BCm-CJ-efs"/>
                                     <constraint firstItem="DI0-ZY-b0O" firstAttribute="bottom" secondItem="DcH-w6-2Ow" secondAttribute="bottom" id="Bsh-41-UxJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="qog-Pv-nlu" secondAttribute="trailing" constant="12" id="Cm4-OL-fcc"/>
                                     <constraint firstItem="QSq-MC-ELU" firstAttribute="top" secondItem="F2L-1x-yNt" secondAttribute="bottom" constant="5" id="ER5-W4-qWg"/>
                                     <constraint firstItem="6c4-Wc-Qce" firstAttribute="top" secondItem="h5Y-m9-4Ww" secondAttribute="bottom" constant="5" id="F4O-fN-coK"/>
                                     <constraint firstItem="TnW-ht-uer" firstAttribute="leading" secondItem="DI0-ZY-b0O" secondAttribute="trailing" constant="14" id="F6h-QX-Wdd"/>
                                     <constraint firstAttribute="trailing" secondItem="qrp-nC-ziq" secondAttribute="trailing" constant="15" id="F7X-0H-Vqr"/>
                                     <constraint firstItem="REb-6w-42q" firstAttribute="leading" secondItem="R5A-II-I46" secondAttribute="leading" id="FLk-VP-SOM"/>
                                     <constraint firstAttribute="trailing" secondItem="N4j-Kv-hiH" secondAttribute="trailing" constant="15" id="Ghk-Ua-fcC"/>
+                                    <constraint firstAttribute="trailing" secondItem="TnW-ht-uer" secondAttribute="trailing" constant="15" id="GvE-Ue-SG9"/>
                                     <constraint firstAttribute="trailing" secondItem="Wjd-CR-Ncc" secondAttribute="trailing" constant="15" id="HQG-SQ-rE3"/>
                                     <constraint firstAttribute="bottom" secondItem="zI0-AB-rFa" secondAttribute="bottom" constant="20" id="Ifb-tt-XOn"/>
                                     <constraint firstItem="QSq-MC-ELU" firstAttribute="centerX" secondItem="jZ8-eV-Oeo" secondAttribute="centerX" id="Nha-bW-SdT"/>
@@ -2244,7 +2268,7 @@
         <scene sceneID="3be-J7-Hrh">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="SDA-I1-CcL" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="会所" image="image 09" id="HZt-BI-f9I"/>
+                    <tabBarItem key="tabBarItem" title="会所" image="gym_type_all_un" selectedImage="gym_type_all" id="HZt-BI-f9I"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="yfn-ul-1Tm">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -2264,7 +2288,7 @@
         <scene sceneID="ctj-OD-Cd6">
             <objects>
                 <navigationController storyboardIdentifier="homeN" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="SAo-0U-0vD" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="首页" image="gym_type_all_un" selectedImage="gym_type_all" id="dAk-Wk-SgS"/>
+                    <tabBarItem key="tabBarItem" title="首页" image="image1" id="dAk-Wk-SgS"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="LRz-dD-yvh">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -2391,12 +2415,12 @@
         <image name="123" width="269" height="483"/>
         <image name="gym_type_all" width="20" height="28"/>
         <image name="gym_type_all_un" width="20" height="28"/>
-        <image name="image 09" width="22" height="22"/>
+        <image name="image1" width="22" height="22"/>
         <image name="location_meitu_24" width="22" height="22"/>
         <image name="u10" width="33" height="36"/>
         <image name="u14" width="120" height="120"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ess-Av-z1K"/>
+        <segue reference="fQo-nx-JfY"/>
     </inferredMetricsTieBreakers>
 </document>

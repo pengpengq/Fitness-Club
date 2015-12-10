@@ -65,7 +65,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    nearByCell *cell=[tableView dequeueReusableCellWithIdentifier:@"nearby"];
+    UITableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"nearby"];
     return cell;
 }
 

@@ -104,20 +104,38 @@
 - (IBAction)logInBtn:(UIButton *)sender {
     
     
-     [self request];
+    [self request];
     NSString *username = _userName.text;
     NSString *password = _passWord.text;
     username=[username stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     password=[password stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    if ([Utilities getStoryboardInstance:@"Main" byIdentity:@"clubdetail"]) {
-        [self.navigationController popViewControllerAnimated:YES];
 
-    }
-    [self loginWithUsername:username andPassword:password];
+    [self notification];
+    
+    
+   [self loginWithUsername:username andPassword:password];
     
 
     
 }
+
+-(void)notification{
+    
+    //创建单例化化通知中心实例
+    NSNotificationCenter *notecenter=[NSNotificationCenter defaultCenter];
+    
+    //通知中心的创建
+    NSNotification *note=[[NSNotification alloc]initWithName:@"requestData" object:nil userInfo:nil];
+    //用通知中心实例发送上述通知
+    [notecenter performSelectorOnMainThread:@selector(postNotification:) withObject:note waitUntilDone:YES ];
+    
+    [self.navigationController popViewControllerAnimated:YES];
+    
+    
+}
+
+
+
 
 - (IBAction)registerBtn:(UIButton *)sender {
     

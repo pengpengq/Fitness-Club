@@ -20,6 +20,7 @@
 @property(strong,nonatomic)NSMutableArray *objectForShow;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property(strong,nonatomic)UIActivityIndicatorView *tableFooterAI;
+@property(strong,nonatomic) NSString * clubId;
 - (IBAction)dinwei:(UIBarButtonItem *)sender;
 
 @end

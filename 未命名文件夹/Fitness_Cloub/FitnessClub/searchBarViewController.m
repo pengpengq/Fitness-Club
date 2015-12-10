@@ -9,7 +9,7 @@
 #import "searchBarViewController.h"
 
 @interface searchBarViewController ()
-
+@property(strong,nonatomic) NSMutableArray *ObjectForShow;
 @end
 
 @implementation searchBarViewController
@@ -20,9 +20,9 @@
     //_tableView=[[UITableView alloc]initWithFrame:self.view.frame];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
+    [_searchBar becomeFirstResponder];
     
-    [self.view addSubview:self.tableView];
-    [self request];
+   // [self request];
     // Do any additional setup after loading the view.
 }
 
@@ -31,7 +31,7 @@
     // Dispose of any resources that can be recreated.
 }
 -(void)request{
-    
+    _ObjectForShow=[NSMutableArray new];
     NSString *request = @"/clubController/nearSearchClub";
     NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:@"1", @"page", @"10", @"perPage",@"0510",@"city",@"120.31",@"jing",@"31.49",@"wei",@"0",@"type",nil];
     [RequestAPI getURL:request withParameters:parameters success:^(id responseObject) {
@@ -40,8 +40,14 @@
             //根据接口返回的数据结构拆解数据，用适当的容器（数据类型）盛放底层数据
             NSDictionary *rootDictory=[responseObject objectForKey:@"result"];
             NSArray *dataArr=[rootDictory objectForKey:@"models"];
+            NSLog(@"dataArr = %@",dataArr);
             
-            
+            for (NSDictionary *dic in dataArr) {
+                clubObject*object=[[clubObject alloc] initWithDictionary:dic];
+                [_ObjectForShow addObject:object];
+                NSLog(@"_objectForShow ＝ %@",_ObjectForShow);
+            }
+            [_tableView reloadData];
         }else{
             
             
@@ -88,7 +94,8 @@
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
-   
+    [self setSearchBeginWithText:searchText];
+    
 }
 
 - (BOOL)searchBarShouldEndEditing:(UISearchBar *)searchBar
@@ -108,6 +115,17 @@
     [searchBar resignFirstResponder];
     [searchBar setShowsCancelButton:NO animated:YES];
 }
-
+- (void)setSearchBeginWithText:(NSString *)text{
+    if (![_searchBar.text isEqualToString:@""]) {
+        [self request];
+    }
+    
+    
+    
+    
+    
+    
+    
+}
 
 @end

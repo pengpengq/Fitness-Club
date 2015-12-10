@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "nearByCell.h"
-#import "nearByObject.h"
+
+
 @interface nearbyViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 
 
