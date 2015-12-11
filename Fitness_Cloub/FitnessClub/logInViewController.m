@@ -110,7 +110,7 @@
     username=[username stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     password=[password stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 
-    [self notification];
+  // [self notification];
     
     
    [self loginWithUsername:username andPassword:password];

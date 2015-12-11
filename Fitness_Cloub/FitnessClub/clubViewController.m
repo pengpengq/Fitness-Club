@@ -284,6 +284,13 @@
     
 }
 
+- (IBAction)searchBtn:(UIButton *)sender {
+    
+    UIViewController *view = [Utilities getStoryboardInstance:@"Main" byIdentity:@"search"];
+    [self.navigationController pushViewController:view  animated:YES];
+
+}
+
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"clubTo"]) {

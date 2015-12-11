@@ -22,5 +22,6 @@
 @property(strong,nonatomic)UIActivityIndicatorView *tableFooterAI;
 @property(strong,nonatomic) NSString * clubId;
 - (IBAction)dinwei:(UIBarButtonItem *)sender;
+- (IBAction)searchBtn:(UIButton *)sender;
 
 @end

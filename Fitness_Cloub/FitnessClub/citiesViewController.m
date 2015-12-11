@@ -15,26 +15,15 @@
 @end
 
 @implementation citiesViewController
-- (id)init
-{
-    self = [super init];
-    if (self) {
-        // Custom initialization
-       _arrayHotCity = [NSMutableArray arrayWithObjects:@"广州市",@"北京市",@"天津市",@"西安市",@"重庆市",@"沈阳市",@"青岛市",@"济南市",@"深圳市",@"长沙市",@"无锡市", nil];
-        
-        self.array = [NSMutableArray array];
-    }
-    return self;
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     _tableView.dataSource=self;
     _tableView.delegate=self;
     [self navitation];
-    [self dataPrepare];
+   [self dataPrepare];
    
-    
+    //[self request];
     // Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -53,6 +42,30 @@
     backItem.title = @"";
     self.navigationItem.backBarButtonItem = backItem;
 }
+
+//-(void)request{
+//    
+//    NSString *request = @"/city/hotAndUpgradedList";
+//    //NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:_eID, @"experienceId",nil];
+//    [RequestAPI getURL:request withParameters:nil success:^(id responseObject) {
+//        NSLog(@"get responseObject = %@", responseObject);
+//        if([[responseObject objectForKey:@"resultFlag"] integerValue]==8001){
+//            
+//            NSDictionary *diction = [[NSDictionary alloc]objectForKey:@"result"];
+//            _array = [diction objectForKey:@"upgraded"];
+//            _arrayHotCity = [diction objectForKey:@"hot"];
+//        }
+//    } failure:^(NSError *error) {
+//        NSLog(@"get error = %@", error.description);
+//        
+//        if (error.code==-1009) {
+//            [Utilities popUpAlertViewWithMsg:@"请检查你的网络再来尝试！"andTitle:nil onView:self];
+//        }
+//        
+//        
+//    }];
+//    
+//}
 //数据准备
 -(void)dataPrepare{
     _cities=[NSMutableDictionary new];
@@ -76,9 +89,7 @@
     _array=(NSMutableArray *)[[_cities allKeys] sortedArrayUsingSelector:@selector(localizedStandardCompare:)];
     //添加热门城市
     NSLog(@"_array%@",_array);
-    NSString *Hot = @"热";
-  // [_array insertObject:@"热" atIndex:0];
- //  [self.cities setObject:_arrayHotCity forKey:@"热"];
+   
 }
 
 

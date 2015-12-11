@@ -177,7 +177,7 @@
           
         }else if ([ns integerValue] == 8020){
             
-         //   [Utilities popUpAlertViewWithMsg:@"该城市暂未开通服务！" andTitle:nil onView:self];
+           [Utilities popUpAlertViewWithMsg:@"该城市暂未开通服务！" andTitle:nil onView:self];
             
         }
         else{

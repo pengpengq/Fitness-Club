@@ -7,7 +7,8 @@
 //
 
 #import "searchBarViewController.h"
-
+#import "searchtableViewCell.h"
+#import "searchObject.h"
 @interface searchBarViewController ()
 @property(strong,nonatomic) NSMutableArray *ObjectForShow;
 @end
@@ -21,6 +22,8 @@
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     [_searchBar becomeFirstResponder];
+    _tableView.tableFooterView=[[UIView alloc ]init];
+
     
    // [self request];
     // Do any additional setup after loading the view.
@@ -33,7 +36,7 @@
 -(void)request{
     _ObjectForShow=[NSMutableArray new];
     NSString *request = @"/clubController/nearSearchClub";
-    NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:@"1", @"page", @"10", @"perPage",@"0510",@"city",@"120.31",@"jing",@"31.49",@"wei",@"0",@"type",nil];
+    NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:@"1", @"page", @"10", @"perPage",_searchBar.text,@"city",@"120.31",@"jing",@"31.49",@"wei",@"0",@"type",nil];
     [RequestAPI getURL:request withParameters:parameters success:^(id responseObject) {
         NSLog(@"get responseObject = %@", responseObject);
         if ([[responseObject objectForKey:@"resultFlag"] integerValue]==8001){
@@ -74,10 +77,13 @@
     return 1;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell * cell=[tableView dequeueReusableCellWithIdentifier:@"cell"];
-    if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+    searchtableViewCell * cell=[tableView dequeueReusableCellWithIdentifier:@"searchcell" forIndexPath:indexPath];
+    if (cell == nil) {
+        cell = [[searchtableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"searchcell"];
     }
+    searchObject *object=[_ObjectForShow objectAtIndex:indexPath.row];
+    [cell.imView sd_setImageWithURL:[NSURL URLWithString:object.imageV]placeholderImage:[UIImage imageNamed:@""]];
+    cell.clubName.text = object.clubName;
     return  cell;
     
 }
@@ -94,7 +100,7 @@
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
-    [self setSearchBeginWithText:searchText];
+    [self setSearchBeginWithText:_searchBar.text];
     
 }
 
@@ -118,14 +124,12 @@
 - (void)setSearchBeginWithText:(NSString *)text{
     if (![_searchBar.text isEqualToString:@""]) {
         [self request];
+    }else{
+        
+        [Utilities popUpAlertViewWithMsg:@"请输入搜索内容！" andTitle:nil onView:self];
     }
     
-    
-    
-    
-    
-    
-    
+  
 }
 
 @end

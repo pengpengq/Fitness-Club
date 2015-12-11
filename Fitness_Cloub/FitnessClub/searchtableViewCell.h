@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface searchtableViewCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UIImageView *imView;
+@property (weak, nonatomic) IBOutlet UILabel *clubName;
 
 @end

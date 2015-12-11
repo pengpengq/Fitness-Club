@@ -160,9 +160,11 @@
                 _type=[rootDictory objectForKey:@"isFavicons"];
                 NSLog(@"isFavicons=%@",_type);
                 if ([_type integerValue] == 1) {
-                    _collection.title = @"取消收藏";
+                    _collection.image =[UIImage imageNamed:@"image04"];
+
                 }else if ([_type isEqual:@"0"]){
-                    _collection.title = @"收藏";
+                    _collection.image =[UIImage imageNamed:@"image03"];
+
                 }
                 _clubAddress.text=[rootDictory objectForKey:@"clubAddressB"];
                 _clubTime.text=[rootDictory objectForKey:@"clubTime"];
@@ -213,74 +215,6 @@
     }
     
 }
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-//       NSDate *dateToDay = [NSDate date];将获得当前时间
-//        NSDateFormatter *df = [[NSDateFormatter alloc] init];
-//        [df setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-//        NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
-//        [df setLocale:locale];
-//        NSString *strDate = [df stringFromDate:dateToDay];
-//        NSLog(@"dateToDay is %@",strDate);
-//
-//
-//
-//    }
-/******当前日期格式化 End******/
-
-//     /******指定日期格式化 Start******/
-//    @autoreleasepool {
-//
-//
-//        NSDateFormatter *df = [[NSDateFormatter alloc] init];//格式化
-//        [df setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-//        NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];//本地化
-//        [df setLocale:locale];
-//        NSString *myDateString = @"2009-09-15 18:30:00";
-//        NSDate *myDate = [df dateFromString:myDateString];
-//        NSLog(@"dateToDay is %@",myDate);
-//
-//
-//
-//    }
-//    /******指定日期格式化 End******/
-//-(void)secondRequest{
-//    NSDate *dateToDay = [NSDate date];
-//    NSDateFormatter *df = [[NSDateFormatter alloc] init];
-//   [df setDateFormat:@"yyyy-MM-dd"];
-//  NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
-//    [df setLocale:locale];
-//    NSString *strDate = [df stringFromDate:dateToDay];
-//    NSLog(@"dateToDay is %@",strDate);
-//    
-//    
-//    NSString *request = @"/course/courseListByOneDay";
-//    NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:_clubID, @"clubId",strDate,@"day",nil];
-//    
-//    
-//    [RequestAPI getURL:request withParameters:parameters success:^(id responseObject) {
-//        NSLog(@"response = %@", responseObject);
-//        
-//        
-//        
-//        
-//    } failure:^(NSError *error) {
-//        
-//        
-//        
-//        
-//        
-//    }];
-//    
-//    
-//}
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
     return 1;
@@ -352,17 +286,15 @@
         NSLog(@"get responseObject = %@", responseObject);
         ns=[responseObject objectForKey:@"resultFlag"];
         if ([ns integerValue]==8001){
-          //  [aiv stopAnimating];
-            
-//            sender.title=@"取消收藏";
             if ([_type integerValue] == 1) {
                 [Utilities popUpAlertViewWithMsg:@"取消收藏成功！" andTitle:nil onView:self];
                 _type = @"0 ";
-                _collection.title = @"收藏";
+                _collection.image =[UIImage imageNamed:@"image03"];
+
             } else {
                 [Utilities popUpAlertViewWithMsg:@"收藏成功！" andTitle:nil onView:self];
                 _type = @"1";
-                _collection.title = @"取消收藏";
+                _collection.image =[UIImage imageNamed:@"image04"];
             }
         }
     }failure:^(NSError *error) {
