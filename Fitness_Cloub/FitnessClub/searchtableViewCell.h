@@ -2,14 +2,13 @@
 //  searchtableViewCell.h
 //  FitnessClub
 //
-//  Created by 米山 on 15/12/10.
+//  Created by 米山 on 15/12/12.
 //  Copyright © 2015年 milaotou. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
 @interface searchtableViewCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UIImageView *imView;
-@property (weak, nonatomic) IBOutlet UILabel *clubName;
+@property (weak, nonatomic) IBOutlet UILabel *clubNameL;
 
 @end

@@ -9,18 +9,7 @@
 #import <UIKit/UIKit.h>
 
 
-@protocol LoginDelegate <NSObject>
-@optional
--(void)didLogin;
-
-@end
 @interface logInViewController : UIViewController
-
-@property(nonatomic,weak) id<LoginDelegate> loginDelegate;
-@property(nonatomic,assign) int viewType;//0:正常登陆 1:返回前页 2://push到指定页面
-@property(nonatomic,assign) BOOL isCallBack;
-@property(nonatomic,weak) UIViewController *returnTo;
-
 
 @property (weak, nonatomic) IBOutlet UITextField *userName;
 @property (weak, nonatomic) IBOutlet UITextField *passWord;

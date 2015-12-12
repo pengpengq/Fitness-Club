@@ -286,7 +286,7 @@
 
 - (IBAction)searchBtn:(UIButton *)sender {
     
-    UIViewController *view = [Utilities getStoryboardInstance:@"Main" byIdentity:@"search"];
+    UIViewController *view = [Utilities getStoryboardInstance:@"Main" byIdentity:@"searchBar"];
     [self.navigationController pushViewController:view  animated:YES];
 
 }

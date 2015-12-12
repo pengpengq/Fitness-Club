@@ -2,7 +2,7 @@
 //  searchtableViewCell.m
 //  FitnessClub
 //
-//  Created by 米山 on 15/12/10.
+//  Created by 米山 on 15/12/12.
 //  Copyright © 2015年 milaotou. All rights reserved.
 //
 

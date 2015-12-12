@@ -205,7 +205,10 @@
 
     
 }
-
+-(void)dealloc{
+    
+    timer_show=nil;
+}
 
 
 

@@ -9,10 +9,9 @@
 #import <Foundation/Foundation.h>
 
 @interface searchObject : NSObject
-@property (strong, nonatomic) NSString *imageV;
+//@property (strong, nonatomic) NSString *imageV;
 @property (strong, nonatomic) NSString *clubName;
-@property (strong, nonatomic) NSString *eLogo;
-@property (strong, nonatomic) NSString *eAddress;
+
 - (id)initWithDictionary:(NSDictionary *)dic;
 
 @end

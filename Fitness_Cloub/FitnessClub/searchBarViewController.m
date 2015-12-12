@@ -7,25 +7,32 @@
 //
 
 #import "searchBarViewController.h"
-#import "searchtableViewCell.h"
 #import "searchObject.h"
-@interface searchBarViewController ()
+@interface searchBarViewController (){
+    
+   
+}
 @property(strong,nonatomic) NSMutableArray *ObjectForShow;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property(strong,nonatomic) NSArray *arrResults;//存储搜索结果
 @end
 
 @implementation searchBarViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _tableView.dataSource = self;
+    _tableView.delegate = self;
+    self.tableView.scrollEnabled = YES;
+    _ObjectForShow = [[NSMutableArray alloc]init];
+    _arrResults = [[NSArray alloc]init];
     
-    //_tableView=[[UITableView alloc]initWithFrame:self.view.frame];
-    self.tableView.dataSource = self;
-    self.tableView.delegate = self;
-    [_searchBar becomeFirstResponder];
-    _tableView.tableFooterView=[[UIView alloc ]init];
+    [self request];
+    
+    
+    
 
     
-   // [self request];
     // Do any additional setup after loading the view.
 }
 
@@ -36,24 +43,27 @@
 -(void)request{
     _ObjectForShow=[NSMutableArray new];
     NSString *request = @"/clubController/nearSearchClub";
-    NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:@"1", @"page", @"10", @"perPage",_searchBar.text,@"city",@"120.31",@"jing",@"31.49",@"wei",@"0",@"type",nil];
+    NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:@"1", @"page", @"10", @"perPage",@"0510",@"city",@"120.31",@"jing",@"31.49",@"wei",@"0",@"type",_searchBar.text, @"keyword",nil];
     [RequestAPI getURL:request withParameters:parameters success:^(id responseObject) {
         NSLog(@"get responseObject = %@", responseObject);
         if ([[responseObject objectForKey:@"resultFlag"] integerValue]==8001){
             //根据接口返回的数据结构拆解数据，用适当的容器（数据类型）盛放底层数据
             NSDictionary *rootDictory=[responseObject objectForKey:@"result"];
             NSArray *dataArr=[rootDictory objectForKey:@"models"];
+           
             NSLog(@"dataArr = %@",dataArr);
             
             for (NSDictionary *dic in dataArr) {
-                clubObject*object=[[clubObject alloc] initWithDictionary:dic];
-                [_ObjectForShow addObject:object];
-                NSLog(@"_objectForShow ＝ %@",_ObjectForShow);
+            NSString *arr=[[NSString alloc]initWithString:[dic objectForKey:@"clubName"] ];
+            //searchObject*object=[[searchObject alloc] initWithDictionary:dic];
+            [_ObjectForShow addObject:arr];
+            NSLog(@"_objectForShow ＝ %@",_ObjectForShow);
             }
-            [_tableView reloadData];
+            
+           [_tableView reloadData];
         }else{
             
-            
+            [Utilities popUpAlertViewWithMsg:[responseObject objectForKey:@"resultFlag"] andTitle:nil onView:nil];
             
         }
         
@@ -74,16 +84,52 @@
 }
 */
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 1;
+    
+    NSInteger rows = 0;
+    if ([tableView isEqual:self.searchDisplayController.searchResultsTableView]){
+        
+        rows = [self.arrResults count];
+        
+    }else{
+        
+        rows = [_ObjectForShow count];
+        
+    }    
+    
+    return rows;
+    
+   // return _ObjectForShow.count;
+    
+    
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    searchtableViewCell * cell=[tableView dequeueReusableCellWithIdentifier:@"searchcell" forIndexPath:indexPath];
-    if (cell == nil) {
-        cell = [[searchtableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"searchcell"];
-    }
+    static NSString *CellIdentifier = @"searchcell";
+    searchtableViewCell * cell=[tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     searchObject *object=[_ObjectForShow objectAtIndex:indexPath.row];
-    [cell.imView sd_setImageWithURL:[NSURL URLWithString:object.imageV]placeholderImage:[UIImage imageNamed:@""]];
-    cell.clubName.text = object.clubName;
+
+    
+    
+    if (cell == nil) {
+        
+        cell = [[searchtableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        
+    }
+    
+    /* Configure the cell. */
+    
+    if ([tableView isEqual:self.searchDisplayController.searchResultsTableView]){
+        
+        cell.clubNameL.text = [self.arrResults objectAtIndex:indexPath.row];
+        
+    }else{
+        
+        cell.clubNameL.text = [self.ObjectForShow objectAtIndex:indexPath.row];
+        
+    }   
+
+   //n [cell.imView sd_setImageWithURL:[NSURL URLWithString:object.imageV]placeholderImage:[UIImage imageNamed:@""]];
     return  cell;
     
 }
@@ -100,7 +146,7 @@
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
-    [self setSearchBeginWithText:_searchBar.text];
+    [self setSearchBeginWithText:searchText];
     
 }
 
@@ -116,7 +162,7 @@
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
 {
-    searchBar.text = @"取消";
+    searchBar.text = @"";
    // [[RealtimeSearchUtil currentUtil] realtimeSearchStop];
     [searchBar resignFirstResponder];
     [searchBar setShowsCancelButton:NO animated:YES];
@@ -126,10 +172,36 @@
         [self request];
     }else{
         
-        [Utilities popUpAlertViewWithMsg:@"请输入搜索内容！" andTitle:nil onView:self];
+        //[Utilities popUpAlertViewWithMsg:@"请输入搜索内容！" andTitle:nil onView:self];
     }
     
   
 }
+- (void)filterContentForSearchText:(NSString*)searchText                               scope:(NSString*)scope {
+    
+    NSPredicate *resultPredicate = [NSPredicate                                      predicateWithFormat:@"SELF contains[cd] %@",                                     searchText];
+    
+    self.arrResults = [self.ObjectForShow filteredArrayUsingPredicate:resultPredicate];
+    
+}
 
+
+
+#pragma mark - UISearchDisplayController delegate methods
+
+-(BOOL)searchDisplayController:(UISearchDisplayController *)controller  shouldReloadTableForSearchString:(NSString *)searchString {
+    
+    [self filterContentForSearchText:searchString                                 scope:[[self.searchDisplayController.searchBar scopeButtonTitles]                                       objectAtIndex:[self.searchDisplayController.searchBar                                                      selectedScopeButtonIndex]]];
+    
+    return YES;
+    
+}
+
+- (BOOL)searchDisplayController:(UISearchDisplayController *)controller  shouldReloadTableForSearchScope:(NSInteger)searchOption {
+    
+    [self filterContentForSearchText:[self.searchDisplayController.searchBar text]                                 scope:[[self.searchDisplayController.searchBar scopeButtonTitles]                                       objectAtIndex:searchOption]];
+    
+    return YES;
+    
+}
 @end

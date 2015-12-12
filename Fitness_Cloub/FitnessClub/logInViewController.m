@@ -112,7 +112,7 @@
 
   // [self notification];
     
-    
+   
    [self loginWithUsername:username andPassword:password];
     
 
@@ -129,7 +129,7 @@
     //用通知中心实例发送上述通知
     [notecenter performSelectorOnMainThread:@selector(postNotification:) withObject:note waitUntilDone:YES ];
     
-    [self.navigationController popViewControllerAnimated:YES];
+   // [self.navigationController popViewControllerAnimated:YES];
     
     
 }
@@ -181,8 +181,9 @@
             NSDictionary *dict = [responseObject objectForKey:@"result"];
             //存入全局变量StorageMgr singletonStorageMgr中以便以后在收藏中调用
             [[StorageMgr singletonStorageMgr] addKey:@"memberId" andValue:[dict objectForKey:@"memberId"]];
-            
-            [self tiaozhuan];
+            [self notification];
+             [self.navigationController popViewControllerAnimated:YES];
+//            [self tiaozhuan];
         } if (Ns.integerValue==8017||Ns.integerValue==8022||Ns.integerValue==8027||Ns.integerValue==8028){
             [Utilities popUpAlertViewWithMsg:@"亲！您的号码不存在，请先注册吧" andTitle:nil onView:self];
             
@@ -192,17 +193,21 @@
     } failure:^(NSError *error) {
         NSLog(@"%@", error);
         [aiv stopAnimating];
+        if (error.code == -1011) {
+            
+            [Utilities popUpAlertViewWithMsg:@"登陆失败，再试一次吧！" andTitle:nil onView:self];
+        }
          [Utilities popUpAlertViewWithMsg:[NSString stringWithFormat:@"%ld",(long)error.code] andTitle:nil onView:self];
     }];
 }
--(void)tiaozhuan{
-    UITabBarController *tab=[Utilities getStoryboardInstance:@"Main" byIdentity:@"home"];
-    UINavigationController* navigation = [[UINavigationController alloc] initWithRootViewController:tab];
-    navigation.navigationBarHidden = YES;
-    navigation.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    [self presentViewController:navigation animated:YES completion:nil];
-
-}
+//-(void)tiaozhuan{
+//    UITabBarController *tab=[Utilities getStoryboardInstance:@"Main" byIdentity:@"home"];
+//    UINavigationController* navigation = [[UINavigationController alloc] initWithRootViewController:tab];
+//    navigation.navigationBarHidden = YES;
+//    navigation.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+//    [self presentViewController:navigation animated:YES completion:nil];
+//
+//}
 
 -(void)request{
     NSString *request = @"/login/getKey";

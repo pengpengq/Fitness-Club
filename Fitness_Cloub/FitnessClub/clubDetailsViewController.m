@@ -58,7 +58,7 @@
     //当任何对象（object:nil）发送出requestData时由当前类执行
     [notecenter addObserverForName:@"requestData" object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note) {
        
-        [self initializeData];
+        [self viewDidLoad];
         [_tableView reloadData];
     }];
 }

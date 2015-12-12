@@ -131,7 +131,7 @@
                     
                     [labelC setText:model.name];
                     [labelC setTextColor:UIColorFromRGB(100, 100, 100)];
-                    [btn setBackgroundImage:[Utilities imageUrl:model.backimgurl] forState:UIControlStateNormal];
+                    [btn setBackgroundImage:[Utilities imageUrl:model.frontImgUrl] forState:UIControlStateNormal];
                     //             [btn sd_setBackgroundImageWithURL:[NSURL URLWithString:model.backimgurl ] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"default"]];
             //}
 }
@@ -345,7 +345,7 @@
 
 
 - (IBAction)serachBtn:(UIButton *)sender {
-    UIViewController *view = [Utilities getStoryboardInstance:@"Main" byIdentity:@"search"];
+    UIViewController *view = [Utilities getStoryboardInstance:@"Main" byIdentity:@"searchBar"];
     [self.navigationController pushViewController:view  animated:YES];
     
     
